@@ -1,59 +1,68 @@
 require("dotenv").config();
-const _ = require("lodash");
-
 const Request = require("request");
+
 const API_URL = `${process.env.API}`;
 const author = {
-  name: "Wilfrido",
-  lastname: "Bonett",
+  name: `${process.env.NAME_AUTHOR}`,
+  lastname: `${process.env.SURNAME_AUTHOR}`,
+};
+
+const setCategoriesByItem = (querystring, filters) => {
+  if (filters.length > 0) {
+    const {
+      value: { path_from_root },
+    } = filters;
+
+    console.log(value, filters);
+
+    return path_from_root.map((category) => {
+      return category.name;
+    });
+  } else {
+    let categories = [];
+    return categories.push(querystring);
+  }
 };
 
 module.exports = {
   index: async (req, res) => {
-    const queryString = req.query.q;
-    Request.get(`${API_URL}sites/MLA/search?q=${queryString}`, (body) => {
-      try {
-        const data = JSON.parse(body);
-        let filters = [],
-          paths = [],
-          categories = [];
+    const {
+      query: { q: querystring },
+    } = req;
 
-        if (data.filters.length !== 0) {
-          filters = data.filters && data.filters[0];
-          paths = filters.values && filters.values[0];
-          categories = _.map(paths.path_from_root, (path) => {
-            return path.name;
+    Request.get(
+      `${API_URL}sites/MLA/search?q=${querystring}`,
+      async (error, response, body) => {
+        try {
+          const { filters, results } = JSON.parse(body);
+          const categories = await setCategoriesByItem(querystring, filters);
+          const items = results.map((item) => {
+            return {
+              id: item.id,
+              title: item.title,
+              price: {
+                currency: item.currency_id,
+                amount: parseInt(item.price.toString().split(".")[0]),
+                decimals: parseInt(item.price.toString().split(".")[1]),
+              },
+              picture: item.thumbnail,
+              condition: item.condition === "new" ? "Nuevo" : "Usado",
+              free_shipping: item.shipping.free_shipping,
+              address: item.address.state_name,
+            };
           });
-        } else {
-          categories.push(queryString);
-        }
 
-        const items = _.map(data.results, (item) => {
-          return {
-            id: item.id,
-            title: item.title,
-            price: {
-              currency: item.currency_id,
-              amount: parseInt(item.price.toString().split(".")[0]),
-              decimals: parseInt(item.price.toString().split(".")[1]),
-            },
-            picture: item.thumbnail,
-            condition: item.condition === "new" ? "Nuevo" : "Usado",
-            free_shipping: item.shipping.free_shipping,
-            address: item.address.state_name,
-          };
-        });
-        const response = {
-          author,
-          categories,
-          items,
-        };
-        res.status(200).json(response);
-      } catch (err) {
-        res.status(500).json({
-          message: err.message,
-        });
+          res.status(200).json({
+            author,
+            categories,
+            items,
+          });
+        } catch (err) {
+          res.status(500).json({
+            message: err.message,
+          });
+        }
       }
-    });
+    );
   },
 };
