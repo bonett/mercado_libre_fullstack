@@ -1,5 +1,7 @@
-const getItemByQuery = require("./item");
+const getItemByParam = require("./getItemByParam");
+const getItemDetailsById = require("./getItemDetailsById");
 
 module.exports = {
-  getItemByQuery,
+  getItemByParam,
+  getItemDetailsById,
 };

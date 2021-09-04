@@ -2,11 +2,18 @@ require("dotenv").config();
 const Request = require("request");
 
 const API_URL = `${process.env.API}`;
-const author = {
+const AUTHOR = {
   name: `${process.env.NAME_AUTHOR}`,
   lastname: `${process.env.SURNAME_AUTHOR}`,
 };
 
+/**
+ * setCategoriesByItem returns item category.
+ *
+ * @param  querystring Queryparams to find categories
+ * @param  filters     FilterList for categories
+ * @return             Returns item category.
+ */
 const setCategoriesByItem = (querystring, filters) => {
   if (filters.length > 0) {
     const {
@@ -22,7 +29,14 @@ const setCategoriesByItem = (querystring, filters) => {
   }
 };
 
-const getItemByQuery = async (req, res) => {
+/**
+ * getItemByParam returns an item list by query param. for Example query=ipod.
+ *
+ * @param  req Information about the HTTP request
+ * @param  res Response HTTP
+ * @return     Returns an item list by query.
+ */
+const getItemByParam = async (req, res) => {
   const {
     query: { q: querystring },
   } = req;
@@ -49,7 +63,7 @@ const getItemByQuery = async (req, res) => {
         });
 
         res.status(200).json({
-          author,
+          author: AUTHOR,
           categories,
           items,
         });
@@ -62,4 +76,4 @@ const getItemByQuery = async (req, res) => {
   );
 };
 
-module.exports = getItemByQuery;
+module.exports = getItemByParam;
