@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["index.js"]
+CMD ["yarn", "run", "devStart"]
