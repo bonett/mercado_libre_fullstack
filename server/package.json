@@ -1,13 +1,26 @@
 {
-  "name": "server",
+  "name": "api-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "description": "api-server for mercado libre challenge.",
   "license": "MIT",
+  "author": "wilfrido bonett",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonett/mercado_libre_fullstack/tree/main-branch/server"
+  },
+  "bugs": {
+    "url": "https://github.com/bonett/mercado_libre_fullstack/tree/main-branch/server/issues"
+  },
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.4",
-    "nodemon": "^2.0.12"
+    "lodash": "^4.17.20",
+    "nodemon": "^2.0.12",
+    "request": "^2.88.2"
   }
 }

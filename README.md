@@ -6,12 +6,11 @@ Description:
 
 A monorepo for mercado libre challenge projects:
 
-```
-image here
-```
+![diagram](https://wbonett-test.000webhostapp.com/2.jpg)
 
 Tools:
-[Docker](https://www.docker.com/)
+
+- [Docker](https://www.docker.com/)
 
 ## How to run this App
 
