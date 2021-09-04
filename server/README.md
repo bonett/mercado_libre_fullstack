@@ -7,9 +7,10 @@ Description:
 Api Server
 
 Tools:
--[Node](https://nodejs.org/en/about/)
--[Express](https://expressjs.com/)
--[Mongoose](https://mongoosejs.com/)
+
+- [Node](https://nodejs.org/en/about/)
+- [Express](https://expressjs.com/)
+- [Mongoose](https://mongoosejs.com/)
 
 ## How to run this App
 
