@@ -6,9 +6,8 @@ Description:
 
 A monorepo for mercado libre challenge projects:
 
-```
-image here
-```
+[diagram](https://drive.google.com/file/d/1NxITBAPb1TcdceF7nMFMKyrwwZadU2Ds/view?usp=sharing)
+
 
 Tools:
 [Docker](https://www.docker.com/)
