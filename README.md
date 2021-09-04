@@ -6,11 +6,11 @@ Description:
 
 A monorepo for mercado libre challenge projects:
 
-![diagram](https://i.ibb.co/Wz4JKvs/Screen-Shot-2021-09-04-at-12-38-46.png)
+![diagram](https://wbonett-test.000webhostapp.com/diagram_melli.png)
 
 
 Tools:
-[Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/)
 
 ## How to run this App
 
