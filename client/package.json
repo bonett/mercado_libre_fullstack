@@ -2,14 +2,39 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "description": "React app Client for mercado libre challenge.",
+  "author": "wilfrido bonett",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.3",
+    "dotenv": "^10.0.0",
+    "enzyme": "^3.11.0",
+    "lodash": "^4.17.21",
+    "node-sass": "^6.0.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-loading-skeleton": "^2.2.0",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-show-more": "^2.0.0",
+    "react-text-truncate": "^0.17.0",
+    "redux": "^4.1.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonett/mercado_libre_fullstack/tree/main-branch/client"
+  },
+  "bugs": {
+    "url": "https://github.com/bonett/mercado_libre_fullstack/tree/main-branch/client/issues"
   },
   "scripts": {
     "start": "react-scripts start",

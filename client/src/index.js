@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import { MELI_THEME } from "./theme";
+import reportWebVitals from "./reportWebVitals";
+import HomeContainer from "./containers/home";
+import { ThemeProvider } from "styled-components";
+import ScrollToTop from "./hoc/scrollToTop";
+import { store } from "./store/configureStore";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter basename={"/"}>
+        <ThemeProvider theme={MELI_THEME}>
+          <ScrollToTop>
+            <Switch>
+              <Route path="" component={() => <HomeContainer />} />
+            </Switch>
+          </ScrollToTop>
+        </ThemeProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
