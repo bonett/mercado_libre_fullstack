@@ -7,7 +7,8 @@ Description:
 React App
 
 Tools:
--[React JS](https://reactjs.org/)
+
+- [React JS](https://reactjs.org/)
 
 ## How to run this App
 
