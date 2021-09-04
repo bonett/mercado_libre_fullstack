@@ -6,7 +6,7 @@ Description:
 
 A monorepo for mercado libre challenge projects:
 
-![diagram](https://drive.google.com/file/d/1NxITBAPb1TcdceF7nMFMKyrwwZadU2Ds/view?usp=sharing)
+![diagram](https://i.ibb.co/RBPDMhX/MELI-CHALLENGE.jpg)
 
 
 Tools:
