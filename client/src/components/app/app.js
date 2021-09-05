@@ -1,62 +1,72 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import NavbarComponent from "../commons/navbar";
+
 import HomeContainer from "../../containers/home";
+import ItemContainer from "../../containers/item";
+import ItemDetailContainer from "../../containers/itemDetail";
+
+import NavbarComponent from "../commons/navbar";
 import { AppSection } from "./app.styled";
 
-class AppComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-
-    this.handleLogoClick = this.handleLogoClick.bind(this);
-    this.handleInputSearch = this.handleInputSearch.bind(this);
-    this.handleSearchButton = this.handleSearchButton.bind(this);
-  }
-
-  handleLogoClick() {
-    const { history } = this.props;
-    history.push(`/`);
-  }
-
-  handleInputSearch(e) {
+const AppComponent = ({ history, query, setQuerySearch }) => {
+  const handleSearchButton = (e) => {
     const {
+      keyCode,
       target: { value },
     } = e;
 
-    console.log(value);
-  }
+    e.preventDefault();
+    if (keyCode === 13 && value !== "") {
+      setQuerySearch(value);
+      setTimeout(() => {
+        history.push(`/items?query=${query}`);
+      }, 300);
+    } else {
+      alert("Por favor, ingrese un producto ...");
+    }
+  };
 
-  handleSearchButton() {
-    console.log("clicked");
-  }
+  const handleInputSearch = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setQuerySearch(value);
+  };
 
-  render() {
-    return (
-      <AppSection>
-        <NavbarComponent
-          /* searchValue={query} */
-          redirectToHome={this.handleLogoClick}
-          handleInputSearch={this.handleInputSearch}
-          handleSearchButton={this.handleSearchButton}
-        />
-        <Switch>
-          <Route path="" component={() => <HomeContainer />} />
-        </Switch>
-      </AppSection>
-    );
-  }
-}
+  const handleRedirectHome = () => {
+    setQuerySearch("");
+    history.push("/");
+  };
+
+  return (
+    <AppSection>
+      <NavbarComponent
+        searchValue={query}
+        redirectToHome={handleRedirectHome}
+        handleInputSearch={handleInputSearch}
+        handleSearchButton={handleSearchButton}
+      />
+      <Switch>
+        <Route path="" component={() => <HomeContainer />} />
+        <Route exact path="/items" component={() => <ItemContainer />} />
+        <Route path="/items/:id" component={() => <ItemDetailContainer />} />
+        <Redirect to={"/"} />
+      </Switch>
+    </AppSection>
+  );
+};
 
 AppComponent.propTypes = {
+  query: PropTypes.string,
   history: PropTypes.object,
+  setQuerySearch: PropTypes.func.isRequired,
 };
 
 AppComponent.defaultProps = {
   history: {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(AppComponent);

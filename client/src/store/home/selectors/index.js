@@ -2,10 +2,10 @@ export default function (globalState) {
   const state = globalState.homeReducer;
 
   const getItemList = () => state.itemList;
-  const getQueryType = () => state.queryType;
+  const getQuerySearch = () => state.querySearch;
 
   return {
     getItemList,
-    getQueryType,
+    getQuerySearch,
   };
 }

@@ -4,7 +4,7 @@ import { HomeSection } from "./home.styled";
 
 class HomeComponent extends Component {
   render() {
-    return <HomeSection>ass</HomeSection>;
+    return <HomeSection></HomeSection>;
   }
 }
 

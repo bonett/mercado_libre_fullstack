@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes, { string } from "prop-types";
 
-/* import "./style.scss"; */
+import { BreadcrumbContent } from "./breadcrumb.styled";
 
-const BreadcrumbComponent = ({ categories }) => {
+const BreadcrumbComponent = ({ breadcrumbCategories }) => {
   return (
-    <div className="container">
+    <BreadcrumbContent className="container">
       <ul className="breadcrumb">
-        {categories.map((category) => {
+        {breadcrumbCategories.map((category) => {
           return (
             <li className="breadcrumb_item" key={category}>
               {category}
@@ -15,16 +15,16 @@ const BreadcrumbComponent = ({ categories }) => {
           );
         })}
       </ul>
-    </div>
+    </BreadcrumbContent>
   );
 };
 
 BreadcrumbComponent.propTypes = {
-  categories: PropTypes.arrayOf(string),
+  breadcrumbCategories: PropTypes.arrayOf(string),
 };
 
 BreadcrumbComponent.defaultProps = {
-  categories: [],
+  breadcrumbCategories: [],
 };
 
 export default BreadcrumbComponent;

@@ -1,12 +1,11 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-
-import "./style.scss";
+import { LoaderContent } from "./loader.styled";
 
 const SkeletonComponent = () => {
   const loaders = [1, 2, 3, 4];
   return (
-    <React.Fragment>
+    <LoaderContent>
       {loaders.map((item) => {
         return (
           <div className="content" key={item}>
@@ -30,7 +29,7 @@ const SkeletonComponent = () => {
           </div>
         );
       })}
-    </React.Fragment>
+    </LoaderContent>
   );
 };
 

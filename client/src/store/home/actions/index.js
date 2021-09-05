@@ -1,11 +1,11 @@
 import at from "../types";
 
-const getQueryType = () => ({
-  type: at.GET_QUERY_TYPE,
+const getQuerySearch = () => ({
+  type: at.GET_QUERY_SEARCH,
 });
 
-const setQueryType = (payload) => ({
-  type: at.SET_QUERY_TYPE,
+const setQuerySearch = (payload) => ({
+  type: at.SET_QUERY_SEARCH,
   payload,
 });
 
@@ -14,8 +14,16 @@ const fetchItemListByParam = (payload) => ({
   payload,
 });
 
+const setItemByID = (payload) => {
+  return {
+    type: at.SET_ITEM_SELECTED,
+    payload,
+  };
+};
+
 export default {
-  getQueryType,
-  setQueryType,
+  getQuerySearch,
+  setQuerySearch,
+  setItemByID,
   fetchItemListByParam,
 };
