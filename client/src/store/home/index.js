@@ -1,7 +1,7 @@
-import * as actions from "./actions";
+import actions from "./actions";
 import types from "./types";
 import selectors from "./selectors";
 import rootReducer from "./reducers";
-/* import rootSaga from "./sagas"; */
+import rootSaga from "./sagas";
 
-export { actions, types, selectors, rootReducer };
+export { actions, types, selectors, rootReducer, rootSaga };

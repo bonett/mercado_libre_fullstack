@@ -10,16 +10,25 @@ import {
   FormWrapper,
 } from "./navbar.styled";
 
-const NavbarComponent = () => {
+const NavbarComponent = ({
+  redirectToHome,
+  searchValue,
+  handleInputSearch,
+  handleSearchButton,
+}) => {
   return (
     <Navbar>
       <ContainerComponent>
         <NavbarContent>
           <LogoWrapper>
-            <LogoComponent />
+            <LogoComponent logoClicked={redirectToHome} />
           </LogoWrapper>
           <FormWrapper>
-            <SearchFormComponent />
+            <SearchFormComponent
+              query={searchValue}
+              handleInputSearch={handleInputSearch}
+              handleSearchButton={handleSearchButton}
+            />
           </FormWrapper>
         </NavbarContent>
       </ContainerComponent>
@@ -27,8 +36,17 @@ const NavbarComponent = () => {
   );
 };
 
-NavbarComponent.propTypes = {};
+NavbarComponent.propTypes = {
+  redirectToHome: PropTypes.func.isRequired,
+  handleInputSearch: PropTypes.func.isRequired,
+  handleSearchButton: PropTypes.func.isRequired,
+  searchValue: PropTypes.string,
+};
 
-NavbarComponent.defaultProps = {};
+NavbarComponent.defaultProps = {
+  redirectToHome: () => {},
+  handleInputSearch: () => {},
+  handleSearchButton: () => {},
+};
 
 export default NavbarComponent;

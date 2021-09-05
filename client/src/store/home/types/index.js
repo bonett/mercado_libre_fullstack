@@ -1,0 +1,6 @@
+export default {
+  GET_QUERY_ITEM: "home/GET_QUERY_ITEM",
+  SET_QUERY_ITEM: "home/SET_QUERY_ITEM",
+
+  FETCH_ITEM_LIST: "home/FETCH_ITEM_LIST",
+};
