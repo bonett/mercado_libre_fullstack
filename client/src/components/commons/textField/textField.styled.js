@@ -13,7 +13,7 @@ export const TextField = styled(({ ...rest }) => <input {...rest} />)`
     border-radius: 4px;
     border: ${theme.shadow.borderBox};
     box-shadow: ${theme.shadow.box};
-    color: color: ${theme.color.dark};;
+    color: ${theme.color.dark};
     font-size: 18px;
     height: 40px;
     padding: 4px 60px 4px 16px;
@@ -21,22 +21,22 @@ export const TextField = styled(({ ...rest }) => <input {...rest} />)`
 
     &::-webkit-input-placeholder {
       color: ${theme.color.gray};
-      font-size: 18px;
     }
 
     &::-moz-placeholder {
       color: ${theme.color.gray};
-      font-size: 18px;
     }
 
     &:-ms-input-placeholder {
       color: ${theme.color.gray};
-      font-size: 18px;
     }
 
     &:-moz-placeholder {
       color: ${theme.color.gray};
-      font-size: 18px;
+    }
+
+    @media screen and (max-width: ${theme.maxScreen.xs}) {
+      font-size: 14px;
     }
   `}
 `;

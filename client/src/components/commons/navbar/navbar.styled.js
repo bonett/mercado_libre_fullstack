@@ -24,20 +24,24 @@ export const LogoWrapper = styled(({ ...rest }) => <div {...rest} />)`
     align-content: center;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 4px;
     width: 86px;
   `}
 `;
 
 export const FormWrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${({}) => css`
+  ${({ theme }) => css`
     align-content: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 4px 4px 4px 20px;
+    padding: 4px 4px 4px 16px;
     width: calc(100% - 86px);
+
+    @media screen and (max-width: ${theme.maxScreen.xs}) {
+      padding: 4px;
+    }
   `}
 `;
 

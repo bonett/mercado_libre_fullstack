@@ -12,13 +12,13 @@ export const meli_light = {
     main: '"Proxima Nova", -apple-system, "Helvetica Neue", Helvetica, Roboto',
   },
   minScreen: {
-    xs: "576x",
+    xs: "576px",
     sm: "768px",
     md: "992px",
     lg: "1200px",
   },
   maxScreen: {
-    xs: "575x",
+    xs: "575px",
     sm: "767px",
     md: "991px",
     lg: "1199px",
