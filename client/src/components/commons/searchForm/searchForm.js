@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import TextFieldComponent from "../textField";
-
-/* import "./style.scss"; */
+import { SearchForm } from "./searchForm.styled";
 
 const SearchFormComponent = () => {
   return (
-    <form
+    <SearchForm
       action={`http://localhost:3000/items?query=${"searchValue"}`}
       method="GET"
       role="search"
@@ -17,8 +15,7 @@ const SearchFormComponent = () => {
                 handleInputSearch={handleInputSearch}
                 searchValue={searchValue}
             /> */}
-      dd
-    </form>
+    </SearchForm>
   );
 };
 

@@ -11,27 +11,33 @@ export const Navbar = styled(({ ...rest }) => <nav {...rest} />)`
 
 export const NavbarContent = styled(({ ...rest }) => <div {...rest} />)`
   ${({}) => css`
-    display: grid;
-    grid-template-areas: "logo search";
-    grid-template-columns: 100px 12fr;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
   `}
 `;
 
 export const LogoWrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${({}) => css`
     align-content: center;
-    grid-area: logo;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    padding: 4px 0;
+    justify-content: center;
+    padding: 4px;
+    width: 86px;
   `}
 `;
 
 export const FormWrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${({}) => css`
-    grid-area: search;
-    padding: 6px 0;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 4px 4px 4px 20px;
+    width: calc(100% - 86px);
   `}
 `;
 

@@ -1,24 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-const customIcon = require("../../../static/img/ic_Search@2x.png.png.png");
-/* import './style.scss'; */
+import { TextFieldWrapper, TextField, Button } from "./textField.styled";
+import searchIcon from "../../../static/img/ic_Search@2x.png.png.png";
 
-const TextFieldComponent = ({ handleInputSearch, searchValue }) => {
+const TextFieldComponent = () => {
   return (
-    <div className="form-control">
-      <input
+    <TextFieldWrapper>
+      <TextField
         type="search"
-        className="form-control_input"
         placeholder="Nunca dejes de buscar"
         maxLength="120"
         autoComplete="off"
         /* onChange={handleInputSearch}
                 value={searchValue} */
       />
-      <button type="submit" className="form-control_btn">
-        <img className="icon" src={customIcon} alt="search" />
-      </button>
-    </div>
+      <Button type="submit" className="form-control_btn">
+        <img src={searchIcon} alt="search item" />
+      </Button>
+    </TextFieldWrapper>
   );
 };
 
