@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { meli_light } from "./theme";
 import reportWebVitals from "./reportWebVitals";
-import HomeContainer from "./containers/home";
+import AppContainer from "./containers/app";
 import { ThemeProvider } from "styled-components";
 import ScrollToTop from "./hoc/scrollToTop";
 import { store } from "./store/configureStore";
@@ -16,9 +16,7 @@ ReactDOM.render(
       <BrowserRouter basename={"/"}>
         <ThemeProvider theme={meli_light}>
           <ScrollToTop>
-            <Switch>
-              <Route path="" component={() => <HomeContainer />} />
-            </Switch>
+            <AppContainer />
           </ScrollToTop>
         </ThemeProvider>
       </BrowserRouter>
