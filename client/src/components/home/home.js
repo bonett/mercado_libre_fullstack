@@ -4,11 +4,7 @@ import { HomeSection } from "./home.styled";
 
 class HomeComponent extends Component {
   render() {
-    return (
-      <HomeSection>
-        <NavbarComponent />
-      </HomeSection>
-    );
+    return <HomeSection></HomeSection>;
   }
 }
 

@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+const customIcon = require("../../../static/img/ic_Search@2x.png.png.png");
 /* import './style.scss'; */
 
 const TextFieldComponent = ({ handleInputSearch, searchValue }) => {
-  /* const search = require('../../../../assets/img/ic_Search@2x.png.png.png'); */
   return (
     <div className="form-control">
       <input
@@ -17,7 +16,7 @@ const TextFieldComponent = ({ handleInputSearch, searchValue }) => {
                 value={searchValue} */
       />
       <button type="submit" className="form-control_btn">
-        <img className="icon" src={"search"} alt="search" />
+        <img className="icon" src={customIcon} alt="search" />
       </button>
     </div>
   );
