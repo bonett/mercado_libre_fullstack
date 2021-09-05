@@ -1,10 +1,10 @@
 import { put, call } from "redux-saga/effects";
-import * as api from "../../../api/fetchItemListByParam";
+import * as api from "../../../api/fetchItemList";
 import at from "../types";
 
 export default function* fetchItemList(params) {
   try {
-    const results = yield call(api.fetchItemListByParam, params);
+    const results = yield call(api.fetchItemList, params);
     console.log(results);
 
     yield put({

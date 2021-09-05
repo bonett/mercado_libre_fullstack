@@ -8,7 +8,10 @@ import ContainerComponent from "../commons/container";
 
 const ItemComponent = ({
   history,
+  query,
   categories,
+  fetchItemList,
+
   items,
   loading,
   getSelectedItem,
@@ -33,11 +36,10 @@ const ItemComponent = ({
   };
 
   useEffect(() => {
-    if (isSearching) {
-      fetchDataByName(searching);
-      statusSearchDone();
+    if (query) {
+      fetchItemList(query);
     }
-  }, [isSearching]);
+  }, [query]);
 
   return (
     <ItemSection>
@@ -70,12 +72,15 @@ const ItemComponent = ({
 };
 
 ItemComponent.propTypes = {
+  query: PropTypes.string,
+  fetchItemList: PropTypes.func.isRequired,
   /* queryParam: PropTypes.string,
   history: PropTypes.object,
   setQueryParam: PropTypes.func.isRequired, */
 };
 
 ItemComponent.defaultProps = {
+  fetchItemList: () => {},
   /* history: {},
   setQueryParam: () => {}, */
 };

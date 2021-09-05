@@ -9,7 +9,7 @@ const setQuerySearch = (payload) => ({
   payload,
 });
 
-const fetchItemListByParam = (payload) => ({
+const fetchItemList = (payload) => ({
   type: at.FETCH_ITEM_LIST,
   payload,
 });
@@ -24,6 +24,6 @@ const setItemByID = (payload) => {
 export default {
   getQuerySearch,
   setQuerySearch,
+  fetchItemList,
   setItemByID,
-  fetchItemListByParam,
 };
