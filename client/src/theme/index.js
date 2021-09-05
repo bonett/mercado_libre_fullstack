@@ -1,12 +1,12 @@
-export const MELI_THEME = {
+export const meli_light = {
   color: {
     blue: "#3483fa",
-    dark: "333333",
-    gray: "999999",
-    plate: "666666",
-    steel: "eeeeee",
-    yellow: "ffe600",
-    white: "ffffff",
+    dark: "#333333",
+    gray: "#999999",
+    plate: "#666666",
+    steel: "#eeeeee",
+    yellow: "#ffe600",
+    white: "#ffffff",
   },
   font: {
     main: '"Proxima Nova", -apple-system, "Helvetica Neue", Helvetica, Roboto',
@@ -37,5 +37,5 @@ export const MELI_THEME = {
 };
 
 export default {
-  MELI_THEME,
+  meli_light,
 };

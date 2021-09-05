@@ -1,21 +1,15 @@
-function HomeComponent() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import NavbarComponent from "../commons/navbar/navbar";
+import { HomeSection } from "./home.styled";
+
+class HomeComponent extends Component {
+  render() {
+    return (
+      <HomeSection>
+        <NavbarComponent />
+      </HomeSection>
+    );
+  }
 }
 
 export default HomeComponent;
