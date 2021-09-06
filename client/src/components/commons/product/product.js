@@ -24,6 +24,13 @@ const ProductItemComponent = ({ product, handleClickItem }) => {
         <Price>
           <React.Fragment>
             {transformAmount(product.price.amount, product.price.currency)}
+            <React.Fragment>
+              {product.price.decimals !== null ? (
+                <span className="decimals">{product.price.decimals}</span>
+              ) : (
+                <span className="decimals">00</span>
+              )}
+            </React.Fragment>
           </React.Fragment>
           <React.Fragment>
             {product.free_shipping && (

@@ -6,7 +6,7 @@ export const Article = styled(({ ...rest }) => <article {...rest} />)`
     background-color: ${theme.color.white};
     display: grid;
     padding: 30px;
-    margin: 10px 0 20px 0;
+    margin: 7px 0;
 
     @media (max-width: ${theme.maxScreen.md}) {
       grid-template-columns: repeat(1, 1fr);
@@ -26,11 +26,11 @@ export const MediaWrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme }) => css`
     grid-area: main;
 
-    @media (max-width: ${theme.maxScreen.sm}) {
+    @media (max-width: ${theme.maxScreen.md}) {
       padding-right: 0;
     }
 
-    @media (min-width: ${theme.minScreen.sm}) {
+    @media (min-width: ${theme.minScreen.md}) {
       padding-right: 20px;
     }
   `}
@@ -43,11 +43,11 @@ export const Cover = styled(({ ...rest }) => <div {...rest} />)`
     background-repeat: no-repeat;
     border-radius: 4px;
 
-    @media (max-width: ${theme.maxScreen.sm}) {
+    @media (max-width: ${theme.maxScreen.md}) {
       height: 300px;
     }
 
-    @media (min-width: ${theme.minScreen.sm}) {
+    @media (min-width: ${theme.minScreen.md}) {
       height: 400px;
     }
   `}
@@ -79,7 +79,7 @@ export const DetailInfoWrapper = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme }) => css`
     grid-area: sd;
 
-    @media (max-width: ${theme.maxScreen.sm}) {
+    @media (max-width: ${theme.maxScreen.md}) {
       margin-top: 14px;
       margin-bottom: 0;
       width: calc(100% + 0);

@@ -5,17 +5,17 @@ export const Article = styled(({ ...rest }) => <article {...rest} />)`
   ${({ theme }) => css`
     cursor: pointer;
     display: flex;
-    padding: 16px;
+    padding: 4px;
     position: relative;
 
     &:after {
       content: "";
       position: absolute;
-      width: 96%;
+      width: calc(100% - 32px);
       height: 1px;
       background: ${theme.color.steel};
       top: 100%;
-      left: 24px;
+      left: 16px;
     }
 
     &:last-child {
@@ -134,7 +134,7 @@ export const Name = styled(({ ...rest }) => <h2 {...rest} />)`
     }
 
     @media (min-width: ${theme.minScreen.xs}) {
-      font-size: 15px;
+      font-size: 16px;
     }
 
     @media (min-width: ${theme.minScreen.sm}) {
@@ -168,6 +168,7 @@ export const Location = styled(({ ...rest }) => <div {...rest} />)`
     @media (max-width: ${theme.maxScreen.xs}) {
       height: auto;
       padding: 0 10px;
+      margin-bottom: 10px;
       width: 100%;
     }
 

@@ -7,8 +7,16 @@ export const Button = styled(({ ...rest }) => <button {...rest} />)`
     border: none;
     padding-left: 0;
 
-    img {
-      height: 44px;
+    @media (max-width: ${theme.maxScreen.xs}) {
+      img {
+        height: 38px;
+      }
+    }
+
+    @media (min-width: ${theme.minScreen.xs}) {
+      img {
+        height: 44px;
+      }
     }
 
     @media screen and (max-width: ${theme.maxScreen.xs}) {

@@ -12,6 +12,7 @@ import {
 import ProductDetailComponent from "../commons/productDetail";
 
 const ItemDetailComponent = ({ itemSelected, status, categories }) => {
+  console.log(categories);
   return (
     <ItemDetailSection>
       <ContainerComponent>

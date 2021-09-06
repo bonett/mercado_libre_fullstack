@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 export const BreadcrumbContent = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css`
-    margin: 10px 0;
+    margin: 7px 0;
   `}
 `;
 
