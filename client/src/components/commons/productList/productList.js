@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes, { object } from "prop-types";
 import ProductItemComponent from "../product";
+import { ProductListContent } from "./productList.styled";
 
 const ProductListComponent = ({ products, handleClickItem }) => {
   return (
-    <React.Fragment>
+    <ProductListContent>
       {products.map((product) => {
         return (
           <ProductItemComponent
@@ -14,7 +15,7 @@ const ProductListComponent = ({ products, handleClickItem }) => {
           />
         );
       })}
-    </React.Fragment>
+    </ProductListContent>
   );
 };
 

@@ -1,20 +1,20 @@
 import React from "react";
 import PropTypes, { string } from "prop-types";
 
-import { BreadcrumbContent } from "./breadcrumb.styled";
+import {
+  BreadcrumbContent,
+  BreadcrumbList,
+  BreadcrumbItem,
+} from "./breadcrumb.styled";
 
 const BreadcrumbComponent = ({ breadcrumbCategories }) => {
   return (
-    <BreadcrumbContent className="container">
-      <ul className="breadcrumb">
+    <BreadcrumbContent>
+      <BreadcrumbList>
         {breadcrumbCategories.map((category) => {
-          return (
-            <li className="breadcrumb_item" key={category}>
-              {category}
-            </li>
-          );
+          return <BreadcrumbItem key={category}>{category}</BreadcrumbItem>;
         })}
-      </ul>
+      </BreadcrumbList>
     </BreadcrumbContent>
   );
 };

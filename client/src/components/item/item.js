@@ -36,12 +36,12 @@ const ItemComponent = ({
           {status === "LOADED" && (
             <React.Fragment>
               <BreadcrumbWrapper>
-                {categories && (
+                {categories.length > 0 && (
                   <BreadcrumbComponent breadcrumbCategories={categories} />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>
-                {items && (
+                {items.length > 0 && (
                   <ProductListComponent
                     products={items}
                     handleClickItem={handleClickItem}

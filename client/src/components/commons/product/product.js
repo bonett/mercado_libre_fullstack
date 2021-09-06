@@ -2,44 +2,44 @@ import React from "react";
 import PropTypes from "prop-types";
 import shippingIcon from "../../../static/img/ic_shipping@2x.png.png.png";
 import transformAmount from "../../../utils/transformAmount";
+import {
+  Article,
+  Thumbnail,
+  Caption,
+  Price,
+  Location,
+  Address,
+  Icon,
+  Name,
+  Condition,
+} from "./product.styled";
 
 const ProductItemComponent = ({ product, handleClickItem }) => {
   return (
-    <article className="item" onClick={() => handleClickItem(product)}>
-      <div className="item__thumbnail">
-        <img
-          className="item__thumbnail_image"
-          src={product.picture}
-          alt={product.title}
-        />
-      </div>
-      <div className="item__caption">
-        <h3 className="item__caption_price">
+    <Article onClick={() => handleClickItem(product)}>
+      <Thumbnail>
+        <img src={product.thumbnail} alt={product.title} />
+      </Thumbnail>
+      <Caption>
+        <Price>
           <React.Fragment>
             {transformAmount(product.price.amount, product.price.currency)}
-            <React.Fragment>
-              {product.price.decimals !== null ? (
-                <span className="decimals">{product.price.decimals}</span>
-              ) : (
-                <span className="decimals">00</span>
-              )}
-            </React.Fragment>
           </React.Fragment>
           <React.Fragment>
             {product.free_shipping && (
-              <span className="icon">
-                <img src={shippingIcon} alt="shiping_car" className="icon-xs" />
-              </span>
+              <Icon>
+                <img src={shippingIcon} alt={product.title} />
+              </Icon>
             )}
           </React.Fragment>
-        </h3>
-        <h2 className="item__caption_title">{product.title}</h2>
-        <h2 className="item__caption_reference">{product.condition}!</h2>
-      </div>
-      <div className="item__location">
-        <h6 className="item__location_origin">{product.address}</h6>
-      </div>
-    </article>
+        </Price>
+        <Name>{product.title}</Name>
+        <Condition>{product.condition}!</Condition>
+      </Caption>
+      <Location>
+        <Address>{product.address}</Address>
+      </Location>
+    </Article>
   );
 };
 
