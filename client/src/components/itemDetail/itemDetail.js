@@ -13,9 +13,9 @@ import {
 import ProductDetailComponent from "../commons/productDetail";
 
 const ItemDetailComponent = ({ itemSelected, status, categories }) => {
+  console.log(itemSelected);
   return (
     <ItemDetailSection>
-      <h2>ahjshjs</h2>
       <ContainerComponent>
         <React.Fragment>
           {status === "LOADING" && <LoaderComponent />}

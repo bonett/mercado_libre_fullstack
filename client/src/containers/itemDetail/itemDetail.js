@@ -8,7 +8,7 @@ function mapStateToProps(state) {
   const {
     data: { item },
     status,
-  } = homeSelectors.getItemList();
+  } = homeSelectors.getItemDetail();
 
   return {
     itemSelected: item,
