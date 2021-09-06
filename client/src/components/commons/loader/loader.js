@@ -1,6 +1,12 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-import { LoaderContent } from "./loader.styled";
+import {
+  LoaderContent,
+  LoaderWrapper,
+  Media,
+  Caption,
+  Location,
+} from "./loader.styled";
 
 const SkeletonComponent = () => {
   const loaders = [1, 2, 3, 4];
@@ -8,11 +14,11 @@ const SkeletonComponent = () => {
     <LoaderContent>
       {loaders.map((item) => {
         return (
-          <div className="content" key={item}>
-            <div className="media">
-              <Skeleton height={180} />
-            </div>
-            <div className="caption">
+          <LoaderWrapper key={item}>
+            <Media>
+              <Skeleton height={180} width={220} />
+            </Media>
+            <Caption>
               <div>
                 <Skeleton height={24} width={220} />
               </div>
@@ -22,11 +28,11 @@ const SkeletonComponent = () => {
               <div>
                 <Skeleton height={18} width={220} />
               </div>
-            </div>
-            <div className="location">
+            </Caption>
+            <Location>
               <Skeleton width={120} />
-            </div>
-          </div>
+            </Location>
+          </LoaderWrapper>
         );
       })}
     </LoaderContent>

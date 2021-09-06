@@ -1,19 +1,20 @@
 import { connect } from "react-redux";
-/* import * as homeStore from "../../store/home"; */
+import * as homeStore from "../../store/home";
 import ItemDetailComponent from "../../components/itemDetail";
 
 function mapStateToProps(state) {
-  /* const homeSelectors = homeStore.selectors(state);
-  const { q } = homeSelectors.getQuery();
-  const itemList = homeSelectors.getItemList(); */
+  const homeSelectors = homeStore.selectors(state);
+  const { categories } = homeSelectors.getItemList();
+  const {
+    data: { item },
+    status,
+  } = homeSelectors.getItemList();
 
   return {
-    /* queryParam: q,
-    itemList, */
+    itemSelected: item,
+    status,
+    categories,
   };
 }
 
-export default connect(mapStateToProps, {
-  /* fetchItemListByParam: homeStore.actions.fetchItemListByParam,
-  setQueryParam: homeStore.actions.setQueryType, */
-})(ItemDetailComponent);
+export default connect(mapStateToProps, {})(ItemDetailComponent);

@@ -2,19 +2,16 @@ import { put, call } from "redux-saga/effects";
 import * as api from "../../../api/fetchItemDetail";
 import at from "../types";
 
-export default function* fetchItemListDetail(params) {
+export default function* fetchItemDetail(params) {
   try {
-    const results = yield call(api.fetchItemDetail, params);
-    console.log(results);
-
+    const { data } = yield call(api.fetchItemDetail, params);
     yield put({
-      type: at.FETCH_ITEM_DETAIL_SUCCESS,
-      itemList: [],
+      type: at.ITEM_SELECTED_SUCCESS,
+      data,
     });
   } catch (error) {
     yield put({
-      type: at.FETCH_ITEM_DETAIL_FAILURE,
-      error,
+      type: at.ITEM_SELECTED_FAILURE,
     });
   }
 }

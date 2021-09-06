@@ -18,6 +18,25 @@ export const querySearch = (state = itemInitialStates.queryString, action) => {
   }
 };
 
+export const itemSelected = (
+  state = itemInitialStates.itemSelected,
+  action
+) => {
+  switch (action.type) {
+    case at.GET_ITEM_SELECTED: {
+      return { ...state };
+    }
+    case at.SET_ITEM_SELECTED: {
+      return {
+        ...state,
+        id: action.payload,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 export const itemList = (state = itemInitialStates.itemList, action) => {
   switch (action.type) {
     case at.ITEM_LIST_FETCH: {
@@ -36,14 +55,32 @@ export const itemList = (state = itemInitialStates.itemList, action) => {
     case at.ITEM_LIST_FAILURE: {
       return {
         ...state,
+        data: null,
         status: "FAILED",
       };
     }
-    case at.ITEM_LIST_DENIED: {
+    default:
+      return state;
+  }
+};
+
+export const itemDetail = (state = itemInitialStates.itemDetail, action) => {
+  switch (action.type) {
+    case at.ITEM_SELECTED_FETCH: {
+      return { ...state, status: "LOADING" };
+    }
+    case at.ITEM_SELECTED_SUCCESS: {
       return {
         ...state,
-        data: [],
+        data: action.data,
         status: "LOADED",
+      };
+    }
+    case at.ITEM_SELECTED_FAILURE: {
+      return {
+        ...state,
+        data: null,
+        status: "FAILED",
       };
     }
     default:
@@ -54,4 +91,6 @@ export const itemList = (state = itemInitialStates.itemList, action) => {
 export default combineReducers({
   querySearch,
   itemList,
+  itemSelected,
+  itemDetail,
 });

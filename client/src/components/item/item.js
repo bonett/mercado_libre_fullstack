@@ -14,6 +14,8 @@ const ItemComponent = ({
   categories,
   history,
   itemListFetch,
+  setItemSelected,
+  itemDetailFetch,
 }) => {
   useEffect(() => {
     if (query) {
@@ -22,10 +24,11 @@ const ItemComponent = ({
   }, [query]);
 
   const handleClickItem = ({ id }) => {
+    setItemSelected(id);
+    itemDetailFetch(id);
     history.push(`/items/${id}`);
   };
 
-  console.log(status, items);
   return (
     <ItemSection>
       <ContainerComponent>
@@ -60,15 +63,19 @@ ItemComponent.propTypes = {
   query: PropTypes.string,
   status: PropTypes.string,
   itemListFetch: PropTypes.func.isRequired,
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   items: PropTypes.array.isRequired,
   history: PropTypes.object,
+  setItemSelected: PropTypes.func.isRequired,
+  itemDetailFetch: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
   itemListFetch: () => {},
   categories: [],
   items: [],
+  setItemSelected: () => {},
+  itemDetailFetch: () => {},
 };
 
 export default withRouter(ItemComponent);

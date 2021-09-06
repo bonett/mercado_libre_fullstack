@@ -6,6 +6,13 @@ const itemInitialStates = {
     data: [],
     status: "INITIAL",
   },
+  itemSelected: {
+    id: null,
+  },
+  itemDetail: {
+    data: null,
+    status: "INITIAL",
+  },
 };
 
 module.exports = {

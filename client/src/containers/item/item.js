@@ -6,14 +6,12 @@ function mapStateToProps(state) {
   const homeSelectors = homeStore.selectors(state);
   const { q } = homeSelectors.getQuerySearch();
   const {
-    data: { author, categories, items },
+    data: { categories, items },
     status,
   } = homeSelectors.getItemList();
-
   return {
     query: q,
     categories,
-    author,
     items,
     status,
   };
@@ -21,4 +19,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   itemListFetch: homeStore.actions.itemListFetch,
+  setItemSelected: homeStore.actions.setItemSelected,
+  itemDetailFetch: homeStore.actions.itemDetailFetch,
 })(ItemComponent);

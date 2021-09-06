@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import BreadcrumbComponent from "../commons/breacrumb";
@@ -9,40 +9,31 @@ import {
   BreadcrumbWrapper,
   ItemDetailDescription,
 } from "./itemDetail.styled";
-/* import ProductDetailComponent from "../../components/Product/Detail"; */
 
-const ItemDetailComponent = ({
-  history,
-  itemDetail,
-  categories,
-  fetchStatusDetail,
-}) => {
-  useEffect(() => {
-    /*     if (itemDetail === null && categories === []) {
-      history.push("/");
-    } */
-  }, []);
+import ProductDetailComponent from "../commons/productDetail";
 
+const ItemDetailComponent = ({ itemSelected, status, categories }) => {
   return (
     <ItemDetailSection>
-      alkjkhsahjksadhjkahjk
+      <h2>ahjshjs</h2>
       <ContainerComponent>
         <React.Fragment>
-          {fetchStatusDetail === "LOADING" && <LoaderComponent />}
+          {status === "LOADING" && <LoaderComponent />}
         </React.Fragment>
 
         <React.Fragment>
-          {fetchStatusDetail === "COMPLETED" && (
+          {status === "LOADED" && (
             <React.Fragment>
               <BreadcrumbWrapper>
-                {categories.length > 0 && (
+                {categories && (
                   <BreadcrumbComponent breadcrumbCategories={categories} />
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
-                {/* {itemDetail && <ProductDetailComponent item={itemDetail} />} */}
+                {itemSelected && <ProductDetailComponent item={itemSelected} />}
                 asdas
               </ItemDetailDescription>
+              assahkjhjkas
             </React.Fragment>
           )}
         </React.Fragment>
@@ -52,13 +43,13 @@ const ItemDetailComponent = ({
 };
 
 ItemDetailComponent.propTypes = {
-  categories: PropTypes.any,
-  itemDetail: PropTypes.any,
+  itemSelected: PropTypes.object.isRequired,
+  status: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
-  itemDetail: "",
 };
 
 export default withRouter(ItemDetailComponent);
