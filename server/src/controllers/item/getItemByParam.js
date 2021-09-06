@@ -24,8 +24,7 @@ const setCategoriesByItem = (querystring, filters) => {
       return category.name;
     });
   } else {
-    let categories = [];
-    return categories.push(querystring);
+    return [querystring];
   }
 };
 

@@ -29,7 +29,7 @@ export const itemList = (state = itemInitialStates.itemList, action) => {
     case at.ITEM_LIST_SUCCESS: {
       return {
         ...state,
-        data: action.itemList,
+        data: action.data,
         status: "LOADED",
       };
     }

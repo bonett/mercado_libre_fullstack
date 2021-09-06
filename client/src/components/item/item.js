@@ -5,36 +5,48 @@ import BreadcrumbComponent from "../commons/breacrumb";
 import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
+import ProductListComponent from "../commons/productList";
 
-const ItemComponent = ({ query, fetchStatus, categories, itemListFetch }) => {
+const ItemComponent = ({
+  query,
+  items,
+  status,
+  categories,
+  history,
+  itemListFetch,
+}) => {
   useEffect(() => {
     if (query) {
       itemListFetch(query);
     }
   }, [query]);
 
+  const handleClickItem = ({ id }) => {
+    history.push(`/items/${id}`);
+  };
+
+  console.log(status, items);
   return (
     <ItemSection>
-      shjgghjghjghjghjghjghjjghghjghj
       <ContainerComponent>
         <React.Fragment>
-          {fetchStatus === "LOADING" && <LoaderComponent />}
+          {status === "LOADING" && <LoaderComponent />}
         </React.Fragment>
         <React.Fragment>
-          {fetchStatus === "LOADED" && (
+          {status === "LOADED" && (
             <React.Fragment>
               <BreadcrumbWrapper>
-                {categories.length > 0 && (
+                {categories && (
                   <BreadcrumbComponent breadcrumbCategories={categories} />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>
-                {/* {items.length > 0 && (
+                {items && (
                   <ProductListComponent
                     products={items}
                     handleClickItem={handleClickItem}
                   />
-                )} */}
+                )}
               </ListWrapper>
             </React.Fragment>
           )}
@@ -46,14 +58,17 @@ const ItemComponent = ({ query, fetchStatus, categories, itemListFetch }) => {
 
 ItemComponent.propTypes = {
   query: PropTypes.string,
-  fetchStatus: PropTypes.string,
+  status: PropTypes.string,
   itemListFetch: PropTypes.func.isRequired,
   categories: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired,
+  history: PropTypes.object,
 };
 
 ItemComponent.defaultProps = {
   itemListFetch: () => {},
   categories: [],
+  items: [],
 };
 
 export default withRouter(ItemComponent);
