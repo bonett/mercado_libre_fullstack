@@ -30,7 +30,13 @@ export const Article = styled(({ ...rest }) => <article {...rest} />)`
       min-height: auto;
     }
 
-    @media (min-width: ${theme.maxScreen.xs}) {
+    @media (min-width: ${theme.minScreen.xs}) {
+      flex-direction: row;
+      height: 180px;
+      min-height: 180px;
+    }
+
+    @media (min-width: ${theme.minScreen.sm}) {
       flex-direction: row;
       height: 220px;
       min-height: 220px;
