@@ -1,5 +1,7 @@
 const itemInitialStates = {
-  queryString: "",
+  queryString: {
+    q: "",
+  },
   itemList: {
     data: [],
     status: "INITIAL",

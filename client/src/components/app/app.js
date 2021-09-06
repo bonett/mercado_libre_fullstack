@@ -23,13 +23,10 @@ const AppComponent = ({ history, query, setQuerySearch }) => {
 
     e.preventDefault();
 
-    if (keyCode === 13 || value !== "") {
-      setTimeout(() => {
-        setQuerySearch(value);
-        history.push(`/items?query=${value}`);
-      }, 300);
-    } else {
-      alert("Por favor, ingrese un producto ...");
+    setQuerySearch(value);
+
+    if (keyCode === 13) {
+      history.push(`/items?search=${query}`);
     }
   };
 
@@ -41,7 +38,7 @@ const AppComponent = ({ history, query, setQuerySearch }) => {
   return (
     <AppSection>
       <NavbarComponent
-        searchValue={query}
+        query={query}
         redirectToHome={handleRedirectHome}
         handleInputSearch={handleInputSearch}
         handleSearchButton={handleSearchButton}

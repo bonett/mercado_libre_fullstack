@@ -8,7 +8,10 @@ export const querySearch = (state = itemInitialStates.queryString, action) => {
       return { ...state };
     }
     case at.SET_QUERY_SEARCH: {
-      return action.payload;
+      return {
+        ...state,
+        q: action.payload,
+      };
     }
     default:
       return state;

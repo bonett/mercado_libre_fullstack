@@ -12,7 +12,7 @@ import {
 
 const NavbarComponent = ({
   redirectToHome,
-  searchValue,
+  query,
   handleInputSearch,
   handleSearchButton,
 }) => {
@@ -25,7 +25,7 @@ const NavbarComponent = ({
           </LogoWrapper>
           <FormWrapper>
             <SearchFormComponent
-              query={searchValue}
+              query={query}
               handleInputSearch={handleInputSearch}
               handleSearchButton={handleSearchButton}
             />
@@ -40,7 +40,7 @@ NavbarComponent.propTypes = {
   redirectToHome: PropTypes.func.isRequired,
   handleInputSearch: PropTypes.func.isRequired,
   handleSearchButton: PropTypes.func.isRequired,
-  searchValue: PropTypes.string,
+  query: PropTypes.string,
 };
 
 NavbarComponent.defaultProps = {

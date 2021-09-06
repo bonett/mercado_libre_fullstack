@@ -6,43 +6,16 @@ import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
 
-const ItemComponent = ({
-  history,
-  query,
-  categories,
-  itemListFetch,
-
-  items,
-  loading,
-  getSelectedItem,
-  fetchDataById,
-  fetchDataByName,
-  searching,
-  statusSearchDone,
-  isSearching,
-  fetchStatus,
-}) => {
-  /*  const dispatchEvents = (id) => {
-    getSelectedItem(id);
-    fetchDataById(id);
-  }; */
-
-  /*  const handleClickItem = (item) => {
-    const { id } = item;
-    dispatchEvents(id);
-    setTimeout(() => {
-      history.push(`/items/${id}`);
-    }, 500);
-  }; */
-
+const ItemComponent = ({ query, fetchStatus, categories, itemListFetch }) => {
   useEffect(() => {
     if (query) {
       itemListFetch(query);
     }
-  });
+  }, [query]);
 
   return (
     <ItemSection>
+      shjgghjghjghjghjghjghjjghghjghj
       <ContainerComponent>
         <React.Fragment>
           {fetchStatus === "LOADING" && <LoaderComponent />}
@@ -73,7 +46,9 @@ const ItemComponent = ({
 
 ItemComponent.propTypes = {
   query: PropTypes.string,
+  fetchStatus: PropTypes.string.isRequired,
   itemListFetch: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
   /* queryParam: PropTypes.string,
   history: PropTypes.object,
   setQueryParam: PropTypes.func.isRequired, */

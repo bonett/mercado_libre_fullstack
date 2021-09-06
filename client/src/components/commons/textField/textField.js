@@ -5,7 +5,7 @@ import searchIcon from "../../../static/img/ic_Search@2x.png.png.png";
 
 const TextFieldComponent = ({
   handleInputSearch,
-  inputValue,
+  query,
   handleSearchButton,
 }) => {
   return (
@@ -15,7 +15,7 @@ const TextFieldComponent = ({
         placeholder="Nunca dejes de buscar"
         maxLength="120"
         onChange={(e) => handleInputSearch(e)}
-        value={inputValue}
+        value={query}
       />
       <Button type="submit" onClick={() => handleSearchButton()}>
         <img src={searchIcon} alt="search item" />
@@ -27,7 +27,7 @@ const TextFieldComponent = ({
 TextFieldComponent.propTypes = {
   handleInputSearch: PropTypes.func.isRequired,
   handleSearchButton: PropTypes.func.isRequired,
-  inputValue: PropTypes.string,
+  query: PropTypes.string,
 };
 
 TextFieldComponent.defaultProps = {

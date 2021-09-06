@@ -10,12 +10,12 @@ const SearchFormComponent = ({
 }) => {
   return (
     <SearchForm
-      action={`http://localhost:3000/items?query=${query}`}
+      action={`http://localhost:3000/items?search=${query}`}
       method="GET"
       role="search"
     >
       <TextFieldComponent
-        inputValue={query}
+        query={query}
         handleInputSearch={handleInputSearch}
         handleSearchButton={handleSearchButton}
       />

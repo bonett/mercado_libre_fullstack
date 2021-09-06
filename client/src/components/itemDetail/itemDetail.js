@@ -25,6 +25,7 @@ const ItemDetailComponent = ({
 
   return (
     <ItemDetailSection>
+      alkjkhsahjksadhjkahjk
       <ContainerComponent>
         <React.Fragment>
           {fetchStatusDetail === "LOADING" && <LoaderComponent />}
