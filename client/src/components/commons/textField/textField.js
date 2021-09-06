@@ -11,7 +11,7 @@ const TextFieldComponent = ({
   return (
     <TextFieldWrapper>
       <TextField
-        type="search"
+        type="text"
         placeholder="Nunca dejes de buscar"
         maxLength="120"
         onChange={(e) => handleInputSearch(e)}

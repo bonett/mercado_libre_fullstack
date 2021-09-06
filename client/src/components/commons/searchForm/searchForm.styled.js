@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 export const SearchForm = styled(({ ...rest }) => <form {...rest} />)`
-  ${({}) => css`
+  ${() => css`
     padding: 4px 0;
     position: relative;
     width: 100%;

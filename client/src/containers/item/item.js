@@ -11,4 +11,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(ItemComponent);
+export default connect(mapStateToProps, {
+  itemListFetch: homeStore.actions.itemListFetch,
+})(ItemComponent);

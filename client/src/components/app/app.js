@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { withRouter } from "react-router";
 import { Route, Switch, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -11,28 +11,26 @@ import NavbarComponent from "../commons/navbar";
 import { AppSection } from "./app.styled";
 
 const AppComponent = ({ history, query, setQuerySearch }) => {
-  const handleSearchButton = (e) => {
+  const handleSearchButton = () => {
+    setQuerySearch(query);
+  };
+
+  const handleInputSearch = (e) => {
     const {
       keyCode,
       target: { value },
     } = e;
 
     e.preventDefault();
-    if (keyCode === 13 && value !== "") {
-      setQuerySearch(value);
+
+    if (keyCode === 13 || value !== "") {
       setTimeout(() => {
-        history.push(`/items?query=${query}`);
+        setQuerySearch(value);
+        history.push(`/items?query=${value}`);
       }, 300);
     } else {
       alert("Por favor, ingrese un producto ...");
     }
-  };
-
-  const handleInputSearch = (e) => {
-    const {
-      target: { value },
-    } = e;
-    setQuerySearch(value);
   };
 
   const handleRedirectHome = () => {

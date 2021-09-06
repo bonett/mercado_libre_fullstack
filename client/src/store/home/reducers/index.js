@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import at from "../types";
-import { INITIAL_STATE } from "../../../static/data";
+import { itemInitialStates } from "../../../config";
 
-export const querySearch = (state = INITIAL_STATE.query, action) => {
+export const querySearch = (state = itemInitialStates.queryString, action) => {
   switch (action.type) {
     case at.GET_QUERY_SEARCH: {
       return { ...state };
@@ -15,10 +15,33 @@ export const querySearch = (state = INITIAL_STATE.query, action) => {
   }
 };
 
-export const itemList = (state = INITIAL_STATE.itemList, action) => {
+export const itemList = (state = itemInitialStates.itemList, action) => {
   switch (action.type) {
-    case at.FETCH_ITEM_LIST: {
-      return { ...state };
+    case at.ITEM_LIST_FETCH: {
+      return {
+        ...state,
+        status: "LOADING",
+      };
+    }
+    case at.ITEM_LIST_SUCCESS: {
+      return {
+        ...state,
+        data: action.itemList,
+        status: "LOADED",
+      };
+    }
+    case at.ITEM_LIST_FAILURE: {
+      return {
+        ...state,
+        status: "FAILED",
+      };
+    }
+    case at.ITEM_LIST_DENIED: {
+      return {
+        ...state,
+        data: [],
+        status: "LOADED",
+      };
     }
     default:
       return state;

@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 export const Container = styled(({ ...rest }) => <div {...rest} />)`
-  ${({}) => css`
+  ${() => css`
     &.container {
       padding-right: 15px;
       padding-left: 15px;

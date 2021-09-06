@@ -10,7 +10,7 @@ export const Navbar = styled(({ ...rest }) => <nav {...rest} />)`
 `;
 
 export const NavbarContent = styled(({ ...rest }) => <div {...rest} />)`
-  ${({}) => css`
+  ${() => css`
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@ export const NavbarContent = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const LogoWrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${({}) => css`
+  ${() => css`
     align-content: center;
     display: flex;
     flex-direction: row;

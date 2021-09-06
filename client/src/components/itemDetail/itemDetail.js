@@ -18,9 +18,9 @@ const ItemDetailComponent = ({
   fetchStatusDetail,
 }) => {
   useEffect(() => {
-    if (itemDetail === null && categories === []) {
+    /*     if (itemDetail === null && categories === []) {
       history.push("/");
-    }
+    } */
   }, []);
 
   return (

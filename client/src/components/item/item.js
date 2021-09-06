@@ -10,7 +10,7 @@ const ItemComponent = ({
   history,
   query,
   categories,
-  fetchItemList,
+  itemListFetch,
 
   items,
   loading,
@@ -22,24 +22,24 @@ const ItemComponent = ({
   isSearching,
   fetchStatus,
 }) => {
-  const dispatchEvents = (id) => {
+  /*  const dispatchEvents = (id) => {
     getSelectedItem(id);
     fetchDataById(id);
-  };
+  }; */
 
-  const handleClickItem = (item) => {
+  /*  const handleClickItem = (item) => {
     const { id } = item;
     dispatchEvents(id);
     setTimeout(() => {
       history.push(`/items/${id}`);
     }, 500);
-  };
+  }; */
 
   useEffect(() => {
     if (query) {
-      fetchItemList(query);
+      itemListFetch(query);
     }
-  }, [query]);
+  });
 
   return (
     <ItemSection>
@@ -73,14 +73,14 @@ const ItemComponent = ({
 
 ItemComponent.propTypes = {
   query: PropTypes.string,
-  fetchItemList: PropTypes.func.isRequired,
+  itemListFetch: PropTypes.func.isRequired,
   /* queryParam: PropTypes.string,
   history: PropTypes.object,
   setQueryParam: PropTypes.func.isRequired, */
 };
 
 ItemComponent.defaultProps = {
-  fetchItemList: () => {},
+  itemListFetch: () => {},
   /* history: {},
   setQueryParam: () => {}, */
 };

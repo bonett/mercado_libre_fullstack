@@ -17,7 +17,7 @@ export const TextField = styled(({ ...rest }) => <input {...rest} />)`
     font-size: 18px;
     height: 40px;
     padding: 4px 60px 4px 16px;
-    width: 100%;
+    width: calc(100% - 76px);
 
     &::-webkit-input-placeholder {
       color: ${theme.color.gray};
@@ -50,11 +50,11 @@ export const Button = styled(({ ...rest }) => <button {...rest} />)`
     border-right: ${theme.shadow.borderBox};
     border-top: ${theme.shadow.borderBox};
     border-left: none;
-    height: 40px;
+    height: 48px;
     position: absolute;
     right: 0;
     top: 4px;
-    width: 50px;
+    width: 56px;
 
     img {
       height: 20px;
