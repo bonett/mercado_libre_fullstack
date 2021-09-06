@@ -163,7 +163,7 @@ export const Condition = styled(({ ...rest }) => <h2 {...rest} />)`
   `}
 `;
 
-export const Location = styled(({ ...rest }) => <h6 {...rest} />)`
+export const Location = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme }) => css`
     @media (max-width: ${theme.maxScreen.xs}) {
       height: auto;

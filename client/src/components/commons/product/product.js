@@ -44,14 +44,7 @@ const ProductItemComponent = ({ product, handleClickItem }) => {
 };
 
 ProductItemComponent.propTypes = {
-  product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    picture: PropTypes.string.isRequired,
-    condition: PropTypes.string.isRequired,
-    free_shipping: PropTypes.bool.isRequired,
-    price: PropTypes.object.isRequired,
-    address: PropTypes.string.isRequired,
-  }).isRequired,
+  product: PropTypes.object.isRequired,
   handleClickItem: PropTypes.func.isRequired,
 };
 

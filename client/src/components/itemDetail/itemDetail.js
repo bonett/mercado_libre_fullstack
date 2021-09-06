@@ -9,11 +9,9 @@ import {
   BreadcrumbWrapper,
   ItemDetailDescription,
 } from "./itemDetail.styled";
-
 import ProductDetailComponent from "../commons/productDetail";
 
 const ItemDetailComponent = ({ itemSelected, status, categories }) => {
-  console.log(itemSelected);
   return (
     <ItemDetailSection>
       <ContainerComponent>
@@ -31,9 +29,7 @@ const ItemDetailComponent = ({ itemSelected, status, categories }) => {
               </BreadcrumbWrapper>
               <ItemDetailDescription>
                 {itemSelected && <ProductDetailComponent item={itemSelected} />}
-                asdas
               </ItemDetailDescription>
-              assahkjhjkas
             </React.Fragment>
           )}
         </React.Fragment>
