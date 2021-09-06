@@ -21,7 +21,7 @@ const ItemComponent = ({ query, fetchStatus, categories, itemListFetch }) => {
           {fetchStatus === "LOADING" && <LoaderComponent />}
         </React.Fragment>
         <React.Fragment>
-          {fetchStatus === "COMPLETED" && (
+          {fetchStatus === "LOADED" && (
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories.length > 0 && (
@@ -46,18 +46,14 @@ const ItemComponent = ({ query, fetchStatus, categories, itemListFetch }) => {
 
 ItemComponent.propTypes = {
   query: PropTypes.string,
-  fetchStatus: PropTypes.string.isRequired,
+  fetchStatus: PropTypes.string,
   itemListFetch: PropTypes.func.isRequired,
   categories: PropTypes.array.isRequired,
-  /* queryParam: PropTypes.string,
-  history: PropTypes.object,
-  setQueryParam: PropTypes.func.isRequired, */
 };
 
 ItemComponent.defaultProps = {
   itemListFetch: () => {},
-  /* history: {},
-  setQueryParam: () => {}, */
+  categories: [],
 };
 
 export default withRouter(ItemComponent);

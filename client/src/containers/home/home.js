@@ -4,11 +4,13 @@ import HomeComponent from "../../components/home";
 
 function mapStateToProps(state) {
   const homeSelectors = homeStore.selectors(state);
-  const itemList = homeSelectors.getItemList();
+  const { q } = homeSelectors.getQuerySearch();
 
   return {
-    itemList,
+    query: q,
   };
 }
 
-export default connect(mapStateToProps, {})(HomeComponent);
+export default connect(mapStateToProps, {
+  setQuerySearch: homeStore.actions.setQuerySearch,
+})(HomeComponent);

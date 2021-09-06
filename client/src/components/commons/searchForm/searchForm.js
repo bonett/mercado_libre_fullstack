@@ -13,12 +13,9 @@ const SearchFormComponent = ({
       action={`http://localhost:3000/items?search=${query}`}
       method="GET"
       role="search"
+      onSubmit={handleSearchButton}
     >
-      <TextFieldComponent
-        query={query}
-        handleInputSearch={handleInputSearch}
-        handleSearchButton={handleSearchButton}
-      />
+      <TextFieldComponent query={query} handleInputSearch={handleInputSearch} />
     </SearchForm>
   );
 };

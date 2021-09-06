@@ -3,21 +3,17 @@ import PropTypes from "prop-types";
 import { TextFieldWrapper, TextField, Button } from "./textField.styled";
 import searchIcon from "../../../static/img/ic_Search@2x.png.png.png";
 
-const TextFieldComponent = ({
-  handleInputSearch,
-  query,
-  handleSearchButton,
-}) => {
+const TextFieldComponent = ({ handleInputSearch, query }) => {
   return (
     <TextFieldWrapper>
       <TextField
-        type="text"
+        type="search"
         placeholder="Nunca dejes de buscar"
         maxLength="120"
-        onChange={(e) => handleInputSearch(e)}
+        onChange={handleInputSearch}
         value={query}
       />
-      <Button type="submit" onClick={() => handleSearchButton()}>
+      <Button type="submit">
         <img src={searchIcon} alt="search item" />
       </Button>
     </TextFieldWrapper>
@@ -26,13 +22,11 @@ const TextFieldComponent = ({
 
 TextFieldComponent.propTypes = {
   handleInputSearch: PropTypes.func.isRequired,
-  handleSearchButton: PropTypes.func.isRequired,
   query: PropTypes.string,
 };
 
 TextFieldComponent.defaultProps = {
   handleInputSearch: () => {},
-  handleSearchButton: () => {},
 };
 
 export default TextFieldComponent;
