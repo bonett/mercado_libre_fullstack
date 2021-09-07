@@ -55,7 +55,7 @@ export const itemList = (state = itemInitialStates.itemList, action) => {
     case at.ITEM_LIST_FAILURE: {
       return {
         ...state,
-        data: null,
+        data: itemInitialStates.itemList.data,
         status: "FAILED",
       };
     }
@@ -79,7 +79,7 @@ export const itemDetail = (state = itemInitialStates.itemDetail, action) => {
     case at.ITEM_SELECTED_FAILURE: {
       return {
         ...state,
-        data: null,
+        data: { item: null },
         status: "FAILED",
       };
     }

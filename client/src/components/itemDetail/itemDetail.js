@@ -5,19 +5,22 @@ import { withRouter } from "react-router-dom";
 import BreadcrumbComponent from "../commons/breacrumb";
 import ContainerComponent from "../commons/container";
 import LoaderComponent from "../commons/loader";
+import ProductDetailComponent from "../commons/productDetail";
+import NotFoundComponent from "../commons/notFound/notFound";
 import {
   ItemDetailSection,
   BreadcrumbWrapper,
   ItemDetailDescription,
 } from "./itemDetail.styled";
-import ProductDetailComponent from "../commons/productDetail";
 
 const ItemDetailComponent = ({
   itemSelected,
   status,
   match,
   categories,
+  history,
   itemDetailFetch,
+  setQuerySearch,
 }) => {
   useEffect(() => {
     if (match) {
@@ -27,6 +30,11 @@ const ItemDetailComponent = ({
       itemDetailFetch(id);
     }
   }, [match]);
+
+  const handleClearFilter = () => {
+    setQuerySearch("");
+    history.push(`/`);
+  };
 
   return (
     <ItemDetailSection>
@@ -44,9 +52,24 @@ const ItemDetailComponent = ({
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
-                {itemSelected && <ProductDetailComponent item={itemSelected} />}
+                <React.Fragment>
+                  {!itemSelected && (
+                    <NotFoundComponent handleClearFilter={handleClearFilter} />
+                  )}
+                </React.Fragment>
+                <React.Fragment>
+                  {itemSelected && (
+                    <ProductDetailComponent item={itemSelected} />
+                  )}
+                </React.Fragment>
               </ItemDetailDescription>
             </React.Fragment>
+          )}
+        </React.Fragment>
+
+        <React.Fragment>
+          {status === "FAILED" && (
+            <NotFoundComponent handleClearFilter={handleClearFilter} />
           )}
         </React.Fragment>
       </ContainerComponent>
@@ -58,13 +81,16 @@ ItemDetailComponent.propTypes = {
   itemSelected: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
+  history: PropTypes.object,
   categories: PropTypes.array.isRequired,
   itemDetailFetch: PropTypes.func.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
   itemDetailFetch: () => {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemDetailComponent);

@@ -7,8 +7,8 @@ import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
 import ProductListComponent from "../commons/productList";
-import qs from "qs";
 import NotFoundComponent from "../commons/notFound/notFound";
+import qs from "qs";
 
 const ItemComponent = ({
   items,
@@ -47,6 +47,7 @@ const ItemComponent = ({
         <React.Fragment>
           {status === "LOADING" && <LoaderComponent screen={"LIST"} />}
         </React.Fragment>
+
         <React.Fragment>
           {status === "LOADED" && (
             <React.Fragment>
@@ -75,6 +76,12 @@ const ItemComponent = ({
                 </React.Fragment>
               </ListWrapper>
             </React.Fragment>
+          )}
+        </React.Fragment>
+
+        <React.Fragment>
+          {status === "FAILED" && (
+            <NotFoundComponent handleClearFilter={handleClearFilter} />
           )}
         </React.Fragment>
       </ContainerComponent>
