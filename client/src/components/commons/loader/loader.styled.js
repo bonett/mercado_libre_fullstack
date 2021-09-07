@@ -17,11 +17,11 @@ export const LoaderWrapper = styled(({ ...rest }) => <div {...rest} />)`
     &:after {
       content: "";
       position: absolute;
-      width: 96%;
+      width: calc(92% - 0px);
       height: 1px;
       background: ${theme.color.steel};
       top: 100%;
-      left: 24px;
+      left: 14px;
     }
 
     &:last-child {
@@ -32,96 +32,118 @@ export const LoaderWrapper = styled(({ ...rest }) => <div {...rest} />)`
 
     @media (max-width: ${theme.maxScreen.xs}) {
       flex-direction: column;
-      height: auto;
-      min-height: auto;
     }
 
     @media (min-width: ${theme.minScreen.xs}) {
-      flex-direction: row;
-      height: 180px;
-      min-height: 180px;
-    }
-
-    @media (min-width: ${theme.minScreen.sm}) {
-      flex-direction: ${render === "DETAIL" ? "column" : "row"};
-      height: auto;
-      min-height: 220px;
+      flex-direction: ${render === "LIST" ? "row" : "column"};
     }
   `}
 `;
 
-export const Media = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme }) => css`
+export const BoxWrapper = styled(({ ...rest }) => <div {...rest} />)`
+  ${({ theme, render }) => css`
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     @media (max-width: ${theme.maxScreen.xs}) {
-      height: 180px;
-      width: 100%;
-      margin-top: 23px;
+      justify-content: center;
+
+      &:nth-child(1) {
+        padding: 0;
+        min-height: 200px;
+        width: 100%;
+
+        span {
+          min-height: 180px;
+        }
+      }
+
+      &:nth-child(2) {
+        padding: 0;
+        min-height: 180px;
+        width: 100%;
+
+        span {
+          min-height: 30px;
+          margin: 8px 0;
+        }
+      }
+
+      &:nth-child(3) {
+        padding: 0;
+        min-height: 40px;
+        width: 100%;
+
+        span {
+          min-height: 30px;
+        }
+      }
     }
 
     @media (min-width: ${theme.minScreen.xs}) {
-      height: 180px;
-    }
+      justify-content: ${render === "LIST" ? "flex-start" : "center"};
 
-    @media (min-width: ${theme.minScreen.sm}) {
-      height: 220px;
+      &:nth-child(1) {
+        padding: 0;
+        min-height: 180px;
+        width: ${render === "LIST" ? "26%" : "100%"};
+
+        span {
+          min-height: 170px;
+        }
+      }
+
+      &:nth-child(2) {
+        padding: ${render === "LIST" ? "0 14px" : "0"};
+        min-height: 180px;
+        width: ${render === "LIST" ? "44%" : "100%"};
+
+        span {
+          min-height: 30px;
+          margin: 8px 0;
+        }
+      }
+
+      &:nth-child(3) {
+        padding: ${render === "LIST" ? "9px 0 0 0" : "0"};
+        min-height: 40px;
+        width: ${render === "LIST" ? "30%" : "100%"};
+
+        span {
+          min-height: 30px;
+        }
+      }
     }
   `}
 `;
 
-export const Caption = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme }) => css`
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: calc(100% - 420px);
+export const SkeletonLoader = styled(({ ...rest }) => <span {...rest} />)`
+  ${({ theme, render }) => css`
+    width: 100%;
+    height: 15px;
+    display: block;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 80%
+      ),
+      ${theme.color.steel};
+    background-repeat: repeat-y;
+    background-size: 50px 500px;
+    background-position: 0 0;
+    animation: shine 1s infinite;
 
-    @media (max-width: ${theme.maxScreen.xs}) {
-      padding: 10px 0;
-      margin-top: 40px;
-      width: 100%;
-    }
-
-    @media (min-width: ${theme.minScreen.xs}) {
-      padding: 20px 16px 10px 16px;
-      width: calc(100% - 360px);
-    }
-
-    @media (min-width: ${theme.minScreen.sm}) {
-      width: calc(100% - 400px);
-    }
-  `}
-`;
-
-export const Location = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme }) => css`
-    @media (max-width: ${theme.maxScreen.xs}) {
-      height: auto;
-      padding: 0;
-      width: 100%;
-    }
-
-    @media (min-width: ${theme.minScreen.xs}) {
-      height: 180px;
-      padding: 20px 18px;
-      width: 140px;
-    }
-
-    @media (min-width: ${theme.minScreen.sm}) {
-      height: 220px;
-      padding: 20px 0;
-      width: 240px;
+    @keyframes shine {
+      to {
+        background-position: 100% 0, 0 0;
+      }
     }
   `}
 `;
 
 LoaderContent.displayName = "LoaderContent";
 LoaderWrapper.displayName = "LoaderWrapper";
-Media.displayName = "Media";
-Caption.displayName = "Caption";
-Location.displayName = "Location";
+BoxWrapper.displayName = "BoxWrapper";
+SkeletonLoader.displayName = "SkeletonLoader";
