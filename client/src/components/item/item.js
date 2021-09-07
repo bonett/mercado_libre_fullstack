@@ -41,6 +41,11 @@ const ItemComponent = ({
     history.push(`/`);
   };
 
+  const handleShortcutClicked = (category) => {
+    setQuerySearch(category);
+    history.push(`/items?search=${category}`);
+  };
+
   return (
     <ItemSection>
       <ContainerComponent>
@@ -53,7 +58,10 @@ const ItemComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories.length > 0 && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>

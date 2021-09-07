@@ -16,11 +16,13 @@ export const BreadcrumbList = styled(({ ...rest }) => <ul {...rest} />)`
 export const BreadcrumbItem = styled(({ ...rest }) => <li {...rest} />)`
   ${({ theme }) => css`
     color: ${theme.color.gray};
+    cursor: pointer;
     display: inline;
     font-size: 14px;
     font-weight: 400;
     margin-right: 10px;
     text-transform: capitalize;
+    pointer-events: auto;
 
     &:after {
       content: ">";
@@ -30,6 +32,7 @@ export const BreadcrumbItem = styled(({ ...rest }) => <li {...rest} />)`
     &:last-child {
       color: ${theme.color.plate};
       font-weight: 800 !important;
+      pointer-events: none;
 
       &:after {
         content: "";

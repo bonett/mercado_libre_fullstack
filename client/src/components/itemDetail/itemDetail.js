@@ -21,20 +21,25 @@ const ItemDetailComponent = ({
   categories,
   history,
   itemDetailFetch,
+  idSelected,
   setQuerySearch,
 }) => {
+  const {
+    params: { id },
+  } = match;
+
   useEffect(() => {
-    if (match) {
-      const {
-        params: { id },
-      } = match;
-      itemDetailFetch(id);
-    }
-  }, [match]);
+    itemDetailFetch(!idSelected ? id : idSelected);
+  }, [idSelected]);
 
   const handleClearFilter = () => {
     setQuerySearch("");
     history.push(`/`);
+  };
+
+  const handleShortcutClicked = (category) => {
+    setQuerySearch(category);
+    history.push(`/items?search=${category}`);
   };
 
   return (
@@ -49,7 +54,10 @@ const ItemDetailComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
@@ -81,18 +89,20 @@ const ItemDetailComponent = ({
 };
 
 ItemDetailComponent.propTypes = {
-  query: PropTypes.string,
+  idSelected: PropTypes.string,
   itemSelected: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object,
   categories: PropTypes.array.isRequired,
   itemDetailFetch: PropTypes.func.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
   itemDetailFetch: () => {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemDetailComponent);
