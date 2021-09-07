@@ -4,20 +4,18 @@ import ItemDetailComponent from "../../components/itemDetail";
 
 const mapStateToProps = (state) => {
   const homeSelectors = homeStore.selectors(state);
-  const {
-    data: { categories },
-  } = homeSelectors.getItemList();
   const { id: idSelected } = homeSelectors.getItemSelected();
   const {
     status,
     data: { item: itemSelected },
   } = homeSelectors.getItemDetail();
+  const { list } = homeSelectors.getCategories();
 
   return {
     idSelected,
     itemSelected,
     status,
-    categories,
+    categories: list,
   };
 };
 

@@ -19,6 +19,7 @@ const ItemComponent = ({
   itemListFetch,
   setItemSelected,
   setQuerySearch,
+  setCategoryList,
 }) => {
   const querySearch = qs.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -31,8 +32,10 @@ const ItemComponent = ({
     }
   }, [querySearch]);
 
-  const handleClickItem = ({ id }) => {
+  const handleClickItem = ({ id, title }) => {
+    const updateCategories = categories.concat(title);
     setItemSelected(id);
+    setCategoryList(updateCategories);
     history.push(`/items/${id}`);
   };
 
@@ -106,6 +109,7 @@ ItemComponent.propTypes = {
   location: PropTypes.object,
   setItemSelected: PropTypes.func.isRequired,
   setQuerySearch: PropTypes.func.isRequired,
+  setCategoryList: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
@@ -113,6 +117,7 @@ ItemComponent.defaultProps = {
   categories: [],
   items: [],
   setItemSelected: () => {},
+  setCategoryList: () => {},
   setQuerySearch: () => {},
 };
 

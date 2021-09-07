@@ -2,6 +2,9 @@ const itemInitialStates = {
   queryString: {
     q: "",
   },
+  categories: {
+    list: [],
+  },
   itemList: {
     data: [],
     status: "INITIAL",

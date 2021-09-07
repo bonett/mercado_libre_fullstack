@@ -8,6 +8,8 @@ const mapStateToProps = (state) => {
     data: { categories, items },
     status,
   } = homeSelectors.getItemList();
+  const { list } = homeSelectors.getCategories();
+
   return {
     categories,
     items,
@@ -20,4 +22,5 @@ export default connect(mapStateToProps, {
   setItemSelected: homeStore.actions.setItemSelected,
   itemDetailFetch: homeStore.actions.itemDetailFetch,
   setQuerySearch: homeStore.actions.setQuerySearch,
+  setCategoryList: homeStore.actions.setCategories,
 })(ItemComponent);

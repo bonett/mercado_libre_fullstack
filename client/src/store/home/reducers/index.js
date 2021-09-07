@@ -37,6 +37,22 @@ export const itemSelected = (
   }
 };
 
+export const categories = (state = itemInitialStates.categories, action) => {
+  switch (action.type) {
+    case at.GET_CATEGORIES: {
+      return { ...state };
+    }
+    case at.SET_CATEGORIES: {
+      return {
+        ...state,
+        list: action.payload,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 export const itemList = (state = itemInitialStates.itemList, action) => {
   switch (action.type) {
     case at.ITEM_LIST_FETCH: {
@@ -89,6 +105,7 @@ export const itemDetail = (state = itemInitialStates.itemDetail, action) => {
 };
 
 export default combineReducers({
+  categories,
   querySearch,
   itemList,
   itemSelected,
