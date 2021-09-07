@@ -29,3 +29,22 @@ Tools:
    ```
 
 5. Finally, you see the project running on Port 'localhost:3000'
+
+
+## How to run unit testing for CLIENT
+
+1. First
+```
+cd client
+```
+
+2. finally 
+
+```
+yarn run test
+```
+
+Expect: 
+
+![test](https://wbonett-test.000webhostapp.com/test.png)
+
