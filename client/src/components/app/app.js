@@ -3,7 +3,6 @@ import { Route, BrowserRouter } from "react-router-dom";
 import HomeContainer from "../../containers/home";
 import ItemContainer from "../../containers/item";
 import ItemDetailContainer from "../../containers/itemDetail";
-
 import { AppSection } from "./app.styled";
 
 const AppComponent = () => {
