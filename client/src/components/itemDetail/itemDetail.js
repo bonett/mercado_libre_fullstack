@@ -90,7 +90,7 @@ const ItemDetailComponent = ({
 
 ItemDetailComponent.propTypes = {
   idSelected: PropTypes.string,
-  itemSelected: PropTypes.object.isRequired,
+  itemSelected: PropTypes.object,
   status: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object,
@@ -101,6 +101,7 @@ ItemDetailComponent.propTypes = {
 
 ItemDetailComponent.defaultProps = {
   categories: [],
+  itemSelected: {},
   itemDetailFetch: () => {},
   setQuerySearch: () => {},
 };
