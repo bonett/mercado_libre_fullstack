@@ -1,0 +1,87 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+body {
+  background-color: $steel;
+  color: $dark;
+  font-family: $source;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+@media (min-width: 312px) {
+  body {
+    overflow-x: scroll;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    overflow-x: hidden !important;
+  }
+}
+
+* {
+  outline: none !important;
+  text-decoration: none;
+}
+
+a,
+button {
+  cursor: pointer;
+  color: $blue;
+}
+
+input {
+  background-color: $white;
+}
+
+img {
+  vertical-align: middle;
+}
+
+input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+header {
+  width: 100% !important;
+}
+
+.wrapper {
+  &__breadcrumb {
+    margin: 16px 0;
+  }
+
+  &__content {
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: $shadow;
+    margin-bottom: 60px;
+  }
+}
+
+.decimals {
+  font-size: 0.5em !important;
+  margin-left: 2px;
+  vertical-align: super;
+}
+
+.icon {
+  &-xs {
+    height: 18px;
+    width: 18px;
+  }
+}
