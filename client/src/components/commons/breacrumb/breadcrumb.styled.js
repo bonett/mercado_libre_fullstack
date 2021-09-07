@@ -18,6 +18,7 @@ export const BreadcrumbItem = styled(({ ...rest }) => <li {...rest} />)`
     color: ${theme.color.gray};
     display: inline;
     font-size: 14px;
+    font-weight: 400;
     margin-right: 10px;
     text-transform: capitalize;
 
@@ -27,8 +28,8 @@ export const BreadcrumbItem = styled(({ ...rest }) => <li {...rest} />)`
     }
 
     &:last-child {
-      color: ${theme.color.plate}};
-      font-weight: 800;
+      color: ${theme.color.plate};
+      font-weight: 800 !important;
 
       &:after {
         content: "";
