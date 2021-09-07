@@ -37,6 +37,22 @@ export const itemSelected = (
   }
 };
 
+export const categories = (state = itemInitialStates.categories, action) => {
+  switch (action.type) {
+    case at.GET_CATEGORIES: {
+      return { ...state };
+    }
+    case at.SET_CATEGORIES: {
+      return {
+        ...state,
+        list: action.payload,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
 export const itemList = (state = itemInitialStates.itemList, action) => {
   switch (action.type) {
     case at.ITEM_LIST_FETCH: {
@@ -55,7 +71,7 @@ export const itemList = (state = itemInitialStates.itemList, action) => {
     case at.ITEM_LIST_FAILURE: {
       return {
         ...state,
-        data: null,
+        data: itemInitialStates.itemList.data,
         status: "FAILED",
       };
     }
@@ -79,7 +95,7 @@ export const itemDetail = (state = itemInitialStates.itemDetail, action) => {
     case at.ITEM_SELECTED_FAILURE: {
       return {
         ...state,
-        data: null,
+        data: { item: null },
         status: "FAILED",
       };
     }
@@ -89,6 +105,7 @@ export const itemDetail = (state = itemInitialStates.itemDetail, action) => {
 };
 
 export default combineReducers({
+  categories,
   querySearch,
   itemList,
   itemSelected,

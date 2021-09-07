@@ -7,6 +7,7 @@ import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
 import ProductListComponent from "../commons/productList";
+import NotFoundComponent from "../commons/notFound/notFound";
 import qs from "qs";
 
 const ItemComponent = ({
@@ -17,6 +18,8 @@ const ItemComponent = ({
   history,
   itemListFetch,
   setItemSelected,
+  setQuerySearch,
+  setCategoryList,
 }) => {
   const querySearch = qs.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -24,13 +27,26 @@ const ItemComponent = ({
 
   useEffect(() => {
     if (querySearch) {
+      setQuerySearch(querySearch);
       itemListFetch(querySearch);
     }
   }, [querySearch]);
 
-  const handleClickItem = ({ id }) => {
+  const handleClickItem = ({ id, title }) => {
+    const updateCategories = categories.concat(title);
     setItemSelected(id);
+    setCategoryList(updateCategories);
     history.push(`/items/${id}`);
+  };
+
+  const handleClearFilter = () => {
+    setQuerySearch("");
+    history.push(`/`);
+  };
+
+  const handleShortcutClicked = (category) => {
+    setQuerySearch(category);
+    history.push(`/items?search=${category}`);
   };
 
   return (
@@ -39,23 +55,44 @@ const ItemComponent = ({
         <React.Fragment>
           {status === "LOADING" && <LoaderComponent screen={"LIST"} />}
         </React.Fragment>
+
         <React.Fragment>
           {status === "LOADED" && (
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories.length > 0 && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>
-                {items.length > 0 && (
-                  <ProductListComponent
-                    products={items}
-                    handleClickItem={handleClickItem}
-                  />
-                )}
+                <React.Fragment>
+                  {items.length === 0 && (
+                    <NotFoundComponent handleClearFilter={handleClearFilter} />
+                  )}
+                </React.Fragment>
+                <React.Fragment>
+                  {items.length > 0 && (
+                    <React.Fragment>
+                      {items.length > 0 && (
+                        <ProductListComponent
+                          products={items}
+                          handleClickItem={handleClickItem}
+                        />
+                      )}
+                    </React.Fragment>
+                  )}
+                </React.Fragment>
               </ListWrapper>
             </React.Fragment>
+          )}
+        </React.Fragment>
+
+        <React.Fragment>
+          {status === "FAILED" && (
+            <NotFoundComponent handleClearFilter={handleClearFilter} />
           )}
         </React.Fragment>
       </ContainerComponent>
@@ -71,6 +108,8 @@ ItemComponent.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object,
   setItemSelected: PropTypes.func.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
+  setCategoryList: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
@@ -78,6 +117,8 @@ ItemComponent.defaultProps = {
   categories: [],
   items: [],
   setItemSelected: () => {},
+  setCategoryList: () => {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemComponent);

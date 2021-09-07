@@ -43,8 +43,8 @@ export const LoaderWrapper = styled(({ ...rest }) => <div {...rest} />)`
     }
 
     @media (min-width: ${theme.minScreen.sm}) {
-      flex-direction: row;
-      height: ${render === "DETAIL" ? "column" : "row"};
+      flex-direction: ${render === "DETAIL" ? "column" : "row"};
+      height: auto;
       min-height: 220px;
     }
   `}

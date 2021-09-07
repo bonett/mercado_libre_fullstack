@@ -19,3 +19,8 @@ export const setItemSelected = (payload) => ({
   type: at.SET_ITEM_SELECTED,
   payload,
 });
+
+export const setCategories = (payload) => ({
+  type: at.SET_CATEGORIES,
+  payload,
+});

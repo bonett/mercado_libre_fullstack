@@ -11,11 +11,7 @@ const AppComponent = () => {
       <BrowserRouter>
         <Route exact path="" component={() => <HomeContainer />} />
         <Route exact path="/items" component={() => <ItemContainer />} />
-        <Route
-          exact
-          path="/items/:id"
-          component={() => <ItemDetailContainer />}
-        />
+        <Route path="/items/:id" component={() => <ItemDetailContainer />} />
       </BrowserRouter>
     </AppSection>
   );

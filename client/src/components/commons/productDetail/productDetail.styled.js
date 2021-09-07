@@ -5,18 +5,16 @@ import styled, { css } from "styled-components";
 export const Article = styled(({ ...rest }) => <article {...rest} />)`
   ${({ theme }) => css`
     background-color: ${theme.color.white};
-    display: grid;
     padding: 30px;
     margin: 7px 0;
 
     @media (max-width: ${theme.maxScreen.md}) {
-      grid-template-columns: repeat(1, 1fr);
-      grid-template-areas:
-        "main"
-        "sd";
+      display: flex;
+      flex-direction: column;
     }
 
     @media (min-width: ${theme.minScreen.md}) {
+      display: grid;
       grid-template-columns: repeat(10, 1fr);
       grid-template-areas: "main main main main main main main sd sd";
     }
@@ -67,8 +65,15 @@ export const Description = styled(({ ...rest }) => <div {...rest} />)`
 export const Heading = styled(({ ...rest }) => <div {...rest} />)`
   ${({ theme }) => css`
     color: ${theme.color.dark};
-    font-size: 28px;
     padding: 20px 0;
+
+    @media (max-width: ${theme.maxScreen.md}) {
+      font-size: 26px;
+    }
+
+    @media (min-width: ${theme.minScreen.md}) {
+      font-size: 28px;
+    }
   `}
 `;
 
@@ -107,17 +112,31 @@ export const Shell = styled(({ ...rest }) => <h6 {...rest} />)`
 `;
 
 export const Name = styled(({ ...rest }) => <h3 {...rest} />)`
-  ${() => css`
-    font-size: 24px;
+  ${({ theme }) => css`
     font-weight: 500;
+
+    @media (max-width: ${theme.maxScreen.md}) {
+      font-size: 20px;
+    }
+
+    @media (min-width: ${theme.minScreen.md}) {
+      font-size: 24px;
+    }
   `}
 `;
 
 export const Price = styled(({ ...rest }) => <h4 {...rest} />)`
-  ${() => css`
-    font-size: 46px;
+  ${({ theme }) => css`
     font-weight: 400;
     padding: 14px 0;
+
+    @media (max-width: ${theme.maxScreen.md}) {
+      font-size: 36px;
+    }
+
+    @media (min-width: ${theme.minScreen.md}) {
+      font-size: 46px;
+    }
   `}
 `;
 

@@ -105,6 +105,7 @@ export const Caption = styled(({ ...rest }) => <div {...rest} />)`
 export const Price = styled(({ ...rest }) => <h3 {...rest} />)`
   ${({ theme }) => css`
     color: ${theme.color.dark};
+    font-size: 24px;
     margin-bottom: 14px;
 
     .icon {
@@ -115,33 +116,18 @@ export const Price = styled(({ ...rest }) => <h3 {...rest} />)`
     @media (max-width: ${theme.maxScreen.xs}) {
       padding: 0 10px;
     }
-
-    @media (min-width: ${theme.minScreen.xs}) {
-      font-size: 18px;
-    }
-
-    @media (min-width: ${theme.minScreen.sm}) {
-      font-size: 24px;
-    }
   `}
 `;
 
 export const Name = styled(({ ...rest }) => <h2 {...rest} />)`
   ${({ theme }) => css`
     color: ${theme.color.dark};
+    font-size: 18px;
     font-weight: 400;
     text-transform: capitalize;
 
     @media (max-width: ${theme.maxScreen.xs}) {
       padding: 0 10px;
-    }
-
-    @media (min-width: ${theme.minScreen.xs}) {
-      font-size: 16px;
-    }
-
-    @media (min-width: ${theme.minScreen.sm}) {
-      font-size: 18px;
     }
   `}
 `;

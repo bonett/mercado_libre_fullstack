@@ -5,28 +5,42 @@ import { withRouter } from "react-router-dom";
 import BreadcrumbComponent from "../commons/breacrumb";
 import ContainerComponent from "../commons/container";
 import LoaderComponent from "../commons/loader";
+import ProductDetailComponent from "../commons/productDetail";
+import NotFoundComponent from "../commons/notFound/notFound";
 import {
   ItemDetailSection,
   BreadcrumbWrapper,
+  NotFoundWithoutCat,
   ItemDetailDescription,
 } from "./itemDetail.styled";
-import ProductDetailComponent from "../commons/productDetail";
 
 const ItemDetailComponent = ({
   itemSelected,
   status,
   match,
   categories,
+  history,
   itemDetailFetch,
+  idSelected,
+  setQuerySearch,
 }) => {
+  const {
+    params: { id },
+  } = match;
+
   useEffect(() => {
-    if (match) {
-      const {
-        params: { id },
-      } = match;
-      itemDetailFetch(id);
-    }
-  }, [match]);
+    itemDetailFetch(!idSelected ? id : idSelected);
+  }, [idSelected]);
+
+  const handleClearFilter = () => {
+    setQuerySearch("");
+    history.push(`/`);
+  };
+
+  const handleShortcutClicked = (category) => {
+    setQuerySearch(category);
+    history.push(`/items?search=${category}`);
+  };
 
   return (
     <ItemDetailSection>
@@ -40,13 +54,33 @@ const ItemDetailComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
-                {itemSelected && <ProductDetailComponent item={itemSelected} />}
+                <React.Fragment>
+                  {!itemSelected && (
+                    <NotFoundComponent handleClearFilter={handleClearFilter} />
+                  )}
+                </React.Fragment>
+                <React.Fragment>
+                  {itemSelected && (
+                    <ProductDetailComponent item={itemSelected} />
+                  )}
+                </React.Fragment>
               </ItemDetailDescription>
             </React.Fragment>
+          )}
+        </React.Fragment>
+
+        <React.Fragment>
+          {status === "FAILED" && (
+            <NotFoundWithoutCat>
+              <NotFoundComponent handleClearFilter={handleClearFilter} />
+            </NotFoundWithoutCat>
           )}
         </React.Fragment>
       </ContainerComponent>
@@ -55,16 +89,21 @@ const ItemDetailComponent = ({
 };
 
 ItemDetailComponent.propTypes = {
-  itemSelected: PropTypes.object.isRequired,
+  idSelected: PropTypes.string,
+  itemSelected: PropTypes.object,
   status: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
+  history: PropTypes.object,
   categories: PropTypes.array.isRequired,
   itemDetailFetch: PropTypes.func.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
+  itemSelected: {},
   itemDetailFetch: () => {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemDetailComponent);
