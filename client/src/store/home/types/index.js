@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   GET_QUERY_SEARCH: "home/GET_QUERY_SEARCH",
   SET_QUERY_SEARCH: "home/SET_QUERY_SEARCH",

@@ -11,8 +11,8 @@ const BreadcrumbComponent = ({ breadcrumbCategories }) => {
   return (
     <BreadcrumbContent>
       <BreadcrumbList>
-        {breadcrumbCategories.map((category) => {
-          return <BreadcrumbItem key={category}>{category}</BreadcrumbItem>;
+        {breadcrumbCategories.map((category, index) => {
+          return <BreadcrumbItem key={index}>{category}</BreadcrumbItem>;
         })}
       </BreadcrumbList>
     </BreadcrumbContent>

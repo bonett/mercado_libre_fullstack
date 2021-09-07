@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import styled, { css } from "styled-components";
 
@@ -54,8 +55,12 @@ export const Cover = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Description = styled(({ ...rest }) => <div {...rest} />)`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
+
+    .view_more {
+      color: ${theme.color.blue} !important;
+    }
   `}
 `;
 
@@ -72,6 +77,7 @@ export const Detail = styled(({ ...rest }) => <div {...rest} />)`
     color: ${theme.color.gray};
     font-size: 16px;
     font-weight: 400;
+    word-break: break-word;
   `}
 `;
 

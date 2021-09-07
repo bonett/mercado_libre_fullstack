@@ -10,7 +10,7 @@ const itemInitialStates = {
     id: null,
   },
   itemDetail: {
-    data: null,
+    data: { item: {} },
     status: "INITIAL",
   },
 };

@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter, Redirect } from "react-router-dom";
-
+import { Route, BrowserRouter } from "react-router-dom";
 import HomeContainer from "../../containers/home";
 import ItemContainer from "../../containers/item";
 import ItemDetailContainer from "../../containers/itemDetail";
@@ -11,10 +10,13 @@ const AppComponent = () => {
   return (
     <AppSection>
       <BrowserRouter>
-        <Route path="" component={() => <HomeContainer />} />
+        <Route exact path="" component={() => <HomeContainer />} />
         <Route exact path="/items" component={() => <ItemContainer />} />
-        <Route path="/items/:id" component={() => <ItemDetailContainer />} />
-        <Redirect to={"/"} />
+        <Route
+          exact
+          path="/items/:id"
+          component={() => <ItemDetailContainer />}
+        />
       </BrowserRouter>
     </AppSection>
   );

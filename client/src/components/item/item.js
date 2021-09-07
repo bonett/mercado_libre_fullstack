@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
@@ -6,26 +7,29 @@ import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
 import ProductListComponent from "../commons/productList";
+import qs from "qs";
 
 const ItemComponent = ({
-  query,
   items,
   status,
   categories,
+  location,
   history,
   itemListFetch,
   setItemSelected,
-  itemDetailFetch,
 }) => {
+  const querySearch = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  }).search;
+
   useEffect(() => {
-    if (query) {
-      itemListFetch(query);
+    if (querySearch) {
+      itemListFetch(querySearch);
     }
-  }, [query]);
+  }, [querySearch]);
 
   const handleClickItem = ({ id }) => {
     setItemSelected(id);
-    itemDetailFetch(id);
     history.push(`/items/${id}`);
   };
 
@@ -33,7 +37,7 @@ const ItemComponent = ({
     <ItemSection>
       <ContainerComponent>
         <React.Fragment>
-          {status === "LOADING" && <LoaderComponent />}
+          {status === "LOADING" && <LoaderComponent screen={"LIST"} />}
         </React.Fragment>
         <React.Fragment>
           {status === "LOADED" && (
@@ -60,14 +64,13 @@ const ItemComponent = ({
 };
 
 ItemComponent.propTypes = {
-  query: PropTypes.string,
   status: PropTypes.string,
   itemListFetch: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   items: PropTypes.array.isRequired,
   history: PropTypes.object,
+  location: PropTypes.object,
   setItemSelected: PropTypes.func.isRequired,
-  itemDetailFetch: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
@@ -75,7 +78,6 @@ ItemComponent.defaultProps = {
   categories: [],
   items: [],
   setItemSelected: () => {},
-  itemDetailFetch: () => {},
 };
 
 export default withRouter(ItemComponent);
