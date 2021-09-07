@@ -10,7 +10,7 @@ export const NotFoundContent = styled(({ ...rest }) => <div {...rest} />)`
     flex-direction: column;
     justify-content: center;
     min-height: 320px;
-    padding: 40px;
+    padding: 40px 20px;
   `}
 `;
 
@@ -46,6 +46,7 @@ export const NotFoundButton = styled(({ ...rest }) => <button {...rest} />)`
     height: 44px;
     padding: 6px 24px;
     text-transform: capitalize;
+    width: 100%;
   `}
 `;
 
