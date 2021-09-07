@@ -54,8 +54,12 @@ export const Cover = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const Description = styled(({ ...rest }) => <div {...rest} />)`
-  ${() => css`
+  ${({ theme }) => css`
     width: 100%;
+
+    .view_more {
+      color: ${theme.color.blue} !important;
+    }
   `}
 `;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ShowMoreText from "react-show-more";
 import transformAmount from "../../../utils/transformAmount";
 import {
   Article,
@@ -26,7 +27,16 @@ const ProductDetailComponent = ({ item }) => {
         ></Cover>
         <Description>
           <Heading>Descripción del producto</Heading>
-          <Detail>{item.description}</Detail>
+          <ShowMoreText
+            lines={10}
+            more="Leer más"
+            className="view_more"
+            less="Leer menos"
+            expanded={true}
+            truncatedEndingComponent={" ... "}
+          >
+            <Detail>{item.description}</Detail>
+          </ShowMoreText>
         </Description>
       </MediaWrapper>
       <DetailInfoWrapper>
