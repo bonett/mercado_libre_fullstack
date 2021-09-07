@@ -7,7 +7,7 @@ import { HomeSection } from "./home.styled";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Test Case For HomeComponent", () => {
-  it("should render content for HomeComponent", () => {
+  it("should not render content for HomeComponent", () => {
     const props = {
       query: "query",
       history: {},
