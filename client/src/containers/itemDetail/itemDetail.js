@@ -9,13 +9,17 @@ const mapStateToProps = (state) => {
     status,
     data: { item: itemSelected },
   } = homeSelectors.getItemDetail();
-  const { list } = homeSelectors.getCategories();
+  const { list: categories } = homeSelectors.getCategories();
+
+  if (!idSelected && status === "LOADED" && categories.length === 0) {
+    categories.push(itemSelected.title);
+  }
 
   return {
     idSelected,
     itemSelected,
     status,
-    categories: list,
+    categories,
   };
 };
 

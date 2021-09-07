@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
     data: { categories, items },
     status,
   } = homeSelectors.getItemList();
-  const { list } = homeSelectors.getCategories();
 
   return {
     categories,
