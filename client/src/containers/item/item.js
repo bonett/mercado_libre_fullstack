@@ -21,4 +21,5 @@ export default connect(mapStateToProps, {
   itemListFetch: homeStore.actions.itemListFetch,
   setItemSelected: homeStore.actions.setItemSelected,
   itemDetailFetch: homeStore.actions.itemDetailFetch,
+  setQuerySearch: homeStore.actions.setQuerySearch,
 })(ItemComponent);
