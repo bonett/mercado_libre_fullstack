@@ -11,6 +11,14 @@ A monorepo for mercado libre challenge projects:
 Tools:
 
 - [Docker](https://www.docker.com/)
+- [React](https://reactjs.org/)
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [Sass](https://sass-lang.com/)
+- [Jest](https://jestjs.io/)
+- [FlexBox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+
+- And More .....
 
 ## How to run this App
 
@@ -49,3 +57,21 @@ Server:
 ```
 localhost:5000
 ```
+
+## How to run unit testing for CLIENT
+
+1. First
+```
+cd client
+```
+
+2. finally 
+
+```
+yarn run test
+```
+
+Expect: 
+
+![test](https://wbonett-test.000webhostapp.com/test.png)
+
