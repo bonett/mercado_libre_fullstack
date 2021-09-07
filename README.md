@@ -6,7 +6,7 @@ Description:
 
 A monorepo for mercado libre challenge projects:
 
-![diagram](https://wbonett-test.000webhostapp.com/2.jpg)
+![diagram](https://wbonett-test.000webhostapp.com/diagrama.jpg)
 
 Tools:
 
