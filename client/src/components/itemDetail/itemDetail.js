@@ -81,19 +81,18 @@ const ItemDetailComponent = ({
 };
 
 ItemDetailComponent.propTypes = {
+  query: PropTypes.string,
   itemSelected: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object,
   categories: PropTypes.array.isRequired,
   itemDetailFetch: PropTypes.func.isRequired,
-  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
   itemDetailFetch: () => {},
-  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemDetailComponent);

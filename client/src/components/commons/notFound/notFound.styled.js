@@ -9,7 +9,7 @@ export const NotFoundContent = styled(({ ...rest }) => <div {...rest} />)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 320px;
+    min-height: 320px;
     padding: 40px;
   `}
 `;
