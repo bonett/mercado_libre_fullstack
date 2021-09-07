@@ -9,7 +9,7 @@ export const LoaderContent = styled(({ ...rest }) => <div {...rest} />)`
 `;
 
 export const LoaderWrapper = styled(({ ...rest }) => <div {...rest} />)`
-  ${({ theme }) => css`
+  ${({ theme, render }) => css`
     display: flex;
     padding: 20px 16px;
     position: relative;
@@ -44,7 +44,7 @@ export const LoaderWrapper = styled(({ ...rest }) => <div {...rest} />)`
 
     @media (min-width: ${theme.minScreen.sm}) {
       flex-direction: row;
-      height: 220px;
+      height: ${render === "DETAIL" ? "column" : "row"};
       min-height: 220px;
     }
   `}
@@ -60,6 +60,7 @@ export const Media = styled(({ ...rest }) => <div {...rest} />)`
     @media (max-width: ${theme.maxScreen.xs}) {
       height: 180px;
       width: 100%;
+      margin-top: 23px;
     }
 
     @media (min-width: ${theme.minScreen.xs}) {
@@ -82,6 +83,7 @@ export const Caption = styled(({ ...rest }) => <div {...rest} />)`
 
     @media (max-width: ${theme.maxScreen.xs}) {
       padding: 10px 0;
+      margin-top: 40px;
       width: 100%;
     }
 

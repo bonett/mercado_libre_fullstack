@@ -32,7 +32,7 @@ const ItemDetailComponent = ({
     <ItemDetailSection>
       <ContainerComponent>
         <React.Fragment>
-          {status === "LOADING" && <LoaderComponent />}
+          {status === "LOADING" && <LoaderComponent screen={"DETAIL"} />}
         </React.Fragment>
 
         <React.Fragment>

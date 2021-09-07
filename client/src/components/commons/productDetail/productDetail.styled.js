@@ -77,6 +77,7 @@ export const Detail = styled(({ ...rest }) => <div {...rest} />)`
     color: ${theme.color.gray};
     font-size: 16px;
     font-weight: 400;
+    word-break: break-word;
   `}
 `;
 

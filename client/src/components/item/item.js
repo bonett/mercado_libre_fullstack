@@ -37,7 +37,7 @@ const ItemComponent = ({
     <ItemSection>
       <ContainerComponent>
         <React.Fragment>
-          {status === "LOADING" && <LoaderComponent />}
+          {status === "LOADING" && <LoaderComponent screen={"LIST"} />}
         </React.Fragment>
         <React.Fragment>
           {status === "LOADED" && (
