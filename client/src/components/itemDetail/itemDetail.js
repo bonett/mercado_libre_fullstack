@@ -10,6 +10,7 @@ import NotFoundComponent from "../commons/notFound/notFound";
 import {
   ItemDetailSection,
   BreadcrumbWrapper,
+  NotFoundWithoutCat,
   ItemDetailDescription,
 } from "./itemDetail.styled";
 
@@ -69,7 +70,9 @@ const ItemDetailComponent = ({
 
         <React.Fragment>
           {status === "FAILED" && (
-            <NotFoundComponent handleClearFilter={handleClearFilter} />
+            <NotFoundWithoutCat>
+              <NotFoundComponent handleClearFilter={handleClearFilter} />
+            </NotFoundWithoutCat>
           )}
         </React.Fragment>
       </ContainerComponent>

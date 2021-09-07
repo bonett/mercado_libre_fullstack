@@ -13,6 +13,13 @@ export const ItemDetailDescription = styled(({ ...rest }) => <div {...rest} />)`
   ${() => css``}
 `;
 
+export const NotFoundWithoutCat = styled(({ ...rest }) => <div {...rest} />)`
+  ${() => css`
+    margin-top: 28px;
+  `}
+`;
+
 ItemDetailSection.displayName = "ItemDetailSection";
 BreadcrumbWrapper.displayName = "BreadcrumbWrapper";
 ItemDetailDescription.displayName = "ItemDetailDescription";
+NotFoundWithoutCat.displayName = "NotFoundWithoutCat";
