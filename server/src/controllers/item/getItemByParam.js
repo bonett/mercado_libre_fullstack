@@ -16,13 +16,11 @@ const AUTHOR = {
  */
 const setCategoriesByItem = (querystring, filters) => {
   if (filters.length > 0) {
-    const {
-      value: { path_from_root },
-    } = filters;
-
-    return path_from_root.map((category) => {
+    const { values } = filters[0];
+    let newCategories = values.map((category) => {
       return category.name;
     });
+    return newCategories.concat(querystring);
   } else {
     return [querystring];
   }
@@ -41,13 +39,12 @@ const getItemByParam = async (req, res) => {
   } = req;
 
   Request.get(
-    `${API_URL}sites/MLA/search?q=${querystring}`,
+    `${API_URL}sites/MLA/search?q=${querystring}&limit=4`,
     async (error, response, body) => {
       try {
         const { filters, results } = JSON.parse(body);
-
         const categories = await setCategoriesByItem(querystring, filters);
-        const items = results.map((item) => {
+        const items = await results.map((item) => {
           return {
             ...item,
             price: {
