@@ -8,8 +8,8 @@ function mapStateToProps(state) {
     data: { categories },
   } = homeSelectors.getItemList();
   const {
-    data: { item: itemSelected },
     status,
+    data: { item: itemSelected },
   } = homeSelectors.getItemDetail();
 
   return {
@@ -19,4 +19,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(ItemDetailComponent);
+export default connect(mapStateToProps, {
+  setQuerySearch: homeStore.actions.setQuerySearch,
+  itemDetailFetch: homeStore.actions.itemDetailFetch,
+})(ItemDetailComponent);

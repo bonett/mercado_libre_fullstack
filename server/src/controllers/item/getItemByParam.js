@@ -20,7 +20,10 @@ const setCategoriesByItem = (querystring, filters) => {
     let newCategories = values.map((category) => {
       return category.name;
     });
-    return newCategories.concat(querystring);
+
+    return !newCategories.includes(querystring)
+      ? newCategories.concat(querystring)
+      : newCategories;
   } else {
     return [querystring];
   }

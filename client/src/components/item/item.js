@@ -6,27 +6,39 @@ import LoaderComponent from "../commons/loader";
 import { ItemSection, BreadcrumbWrapper, ListWrapper } from "./item.styled";
 import ContainerComponent from "../commons/container";
 import ProductListComponent from "../commons/productList";
+import qs from "qs";
 
 const ItemComponent = ({
   query,
   items,
   status,
   categories,
+  location,
   history,
   itemListFetch,
   setItemSelected,
-  itemDetailFetch,
+  setQuerySearch,
 }) => {
+  const querySearch = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  }).search;
+
   useEffect(() => {
-    if (query) {
-      itemListFetch(query);
+    if (querySearch) {
+      itemListFetch(querySearch);
     }
-  }, [query]);
+  }, [querySearch]);
 
   const handleClickItem = ({ id }) => {
     setItemSelected(id);
-    itemDetailFetch(id);
     history.push(`/items/${id}`);
+  };
+
+  const handleShortcutClicked = (shortcut) => {
+    setQuerySearch(shortcut);
+    setTimeout(() => {
+      history.push(`/items?search=${shortcut}`);
+    }, 300);
   };
 
   return (
@@ -40,7 +52,10 @@ const ItemComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories.length > 0 && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>
@@ -66,8 +81,9 @@ ItemComponent.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   items: PropTypes.array.isRequired,
   history: PropTypes.object,
+  location: PropTypes.object,
   setItemSelected: PropTypes.func.isRequired,
-  itemDetailFetch: PropTypes.func.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
@@ -75,7 +91,7 @@ ItemComponent.defaultProps = {
   categories: [],
   items: [],
   setItemSelected: () => {},
-  itemDetailFetch: () => {},
+  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemComponent);

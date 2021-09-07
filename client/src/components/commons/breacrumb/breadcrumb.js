@@ -7,12 +7,22 @@ import {
   BreadcrumbItem,
 } from "./breadcrumb.styled";
 
-const BreadcrumbComponent = ({ breadcrumbCategories }) => {
+const BreadcrumbComponent = ({
+  breadcrumbCategories,
+  handleShortcutClicked,
+}) => {
   return (
     <BreadcrumbContent>
       <BreadcrumbList>
-        {breadcrumbCategories.map((category) => {
-          return <BreadcrumbItem key={category}>{category}</BreadcrumbItem>;
+        {breadcrumbCategories.map((category, index) => {
+          return (
+            <BreadcrumbItem
+              key={index}
+              onClick={() => handleShortcutClicked(category)}
+            >
+              {category}
+            </BreadcrumbItem>
+          );
         })}
       </BreadcrumbList>
     </BreadcrumbContent>
@@ -21,10 +31,12 @@ const BreadcrumbComponent = ({ breadcrumbCategories }) => {
 
 BreadcrumbComponent.propTypes = {
   breadcrumbCategories: PropTypes.arrayOf(string),
+  handleShortcutClicked: PropTypes.func.isRequired,
 };
 
 BreadcrumbComponent.defaultProps = {
   breadcrumbCategories: [],
+  handleShortcutClicked: () => {},
 };
 
 export default BreadcrumbComponent;

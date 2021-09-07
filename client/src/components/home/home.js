@@ -10,9 +10,7 @@ const HomeComponent = ({ history, query, setQuerySearch }) => {
     e.preventDefault();
     if (query !== "") {
       setQuerySearch(query);
-      setTimeout(() => {
-        history.push(`/items?search=${query}`);
-      }, 300);
+      history.push(`/items?search=${query}`);
     }
   };
 
@@ -20,6 +18,7 @@ const HomeComponent = ({ history, query, setQuerySearch }) => {
     const {
       target: { value },
     } = e;
+    e.preventDefault();
     setQuerySearch(value);
   };
 

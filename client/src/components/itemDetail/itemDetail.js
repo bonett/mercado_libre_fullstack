@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import BreadcrumbComponent from "../commons/breacrumb";
@@ -11,8 +11,29 @@ import {
 } from "./itemDetail.styled";
 import ProductDetailComponent from "../commons/productDetail";
 
-const ItemDetailComponent = ({ itemSelected, status, categories }) => {
-  console.log(categories);
+const ItemDetailComponent = ({
+  itemSelected,
+  status,
+  history,
+  match,
+  categories,
+  setQuerySearch,
+  itemDetailFetch,
+}) => {
+  const handleShortcutClicked = (shortcut) => {
+    setQuerySearch(shortcut);
+    history.push(`/items?search=${shortcut}`);
+  };
+
+  useEffect(() => {
+    if (match) {
+      const {
+        params: { id },
+      } = match;
+      itemDetailFetch(id);
+    }
+  }, [match]);
+
   return (
     <ItemDetailSection>
       <ContainerComponent>
@@ -25,7 +46,10 @@ const ItemDetailComponent = ({ itemSelected, status, categories }) => {
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories && (
-                  <BreadcrumbComponent breadcrumbCategories={categories} />
+                  <BreadcrumbComponent
+                    breadcrumbCategories={categories}
+                    handleShortcutClicked={handleShortcutClicked}
+                  />
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
@@ -42,11 +66,17 @@ const ItemDetailComponent = ({ itemSelected, status, categories }) => {
 ItemDetailComponent.propTypes = {
   itemSelected: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
+  setQuerySearch: PropTypes.func.isRequired,
+  itemDetailFetch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
+  setQuerySearch: () => {},
+  itemDetailFetch: () => {},
 };
 
 export default withRouter(ItemDetailComponent);

@@ -11,10 +11,13 @@ const AppComponent = () => {
   return (
     <AppSection>
       <BrowserRouter>
-        <Route path="" component={() => <HomeContainer />} />
+        <Route exact path="" component={() => <HomeContainer />} />
         <Route exact path="/items" component={() => <ItemContainer />} />
-        <Route path="/items/:id" component={() => <ItemDetailContainer />} />
-        <Redirect to={"/"} />
+        <Route
+          exact
+          path="/items/:id"
+          component={() => <ItemDetailContainer />}
+        />
       </BrowserRouter>
     </AppSection>
   );
