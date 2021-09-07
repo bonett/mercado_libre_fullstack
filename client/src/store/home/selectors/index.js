@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function (globalState) {
   const state = globalState.homeReducer;
 

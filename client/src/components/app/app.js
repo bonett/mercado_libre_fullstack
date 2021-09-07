@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter, Redirect } from "react-router-dom";
-
+import { Route, BrowserRouter } from "react-router-dom";
 import HomeContainer from "../../containers/home";
 import ItemContainer from "../../containers/item";
 import ItemDetailContainer from "../../containers/itemDetail";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import styled, { css } from "styled-components";
 
@@ -60,11 +61,13 @@ export const Thumbnail = styled(({ ...rest }) => <div {...rest} />)`
 
     @media (max-width: ${theme.maxScreen.xs}) {
       height: 180px;
+      padding: 10px 0;
       width: 100%;
     }
 
     @media (min-width: ${theme.minScreen.xs}) {
       height: 180px;
+      padding: 0;
       width: 140px;
     }
 

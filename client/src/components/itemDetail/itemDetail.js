@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
@@ -14,17 +15,10 @@ import ProductDetailComponent from "../commons/productDetail";
 const ItemDetailComponent = ({
   itemSelected,
   status,
-  history,
   match,
   categories,
-  setQuerySearch,
   itemDetailFetch,
 }) => {
-  const handleShortcutClicked = (shortcut) => {
-    setQuerySearch(shortcut);
-    history.push(`/items?search=${shortcut}`);
-  };
-
   useEffect(() => {
     if (match) {
       const {
@@ -46,10 +40,7 @@ const ItemDetailComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories && (
-                  <BreadcrumbComponent
-                    breadcrumbCategories={categories}
-                    handleShortcutClicked={handleShortcutClicked}
-                  />
+                  <BreadcrumbComponent breadcrumbCategories={categories} />
                 )}
               </BreadcrumbWrapper>
               <ItemDetailDescription>
@@ -66,16 +57,13 @@ const ItemDetailComponent = ({
 ItemDetailComponent.propTypes = {
   itemSelected: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   categories: PropTypes.array.isRequired,
-  setQuerySearch: PropTypes.func.isRequired,
   itemDetailFetch: PropTypes.func.isRequired,
 };
 
 ItemDetailComponent.defaultProps = {
   categories: [],
-  setQuerySearch: () => {},
   itemDetailFetch: () => {},
 };
 

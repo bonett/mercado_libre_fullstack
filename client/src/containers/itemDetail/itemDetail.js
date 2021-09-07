@@ -20,6 +20,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  setQuerySearch: homeStore.actions.setQuerySearch,
   itemDetailFetch: homeStore.actions.itemDetailFetch,
 })(ItemDetailComponent);

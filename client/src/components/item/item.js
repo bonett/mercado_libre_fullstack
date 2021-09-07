@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
@@ -9,7 +10,6 @@ import ProductListComponent from "../commons/productList";
 import qs from "qs";
 
 const ItemComponent = ({
-  query,
   items,
   status,
   categories,
@@ -17,7 +17,6 @@ const ItemComponent = ({
   history,
   itemListFetch,
   setItemSelected,
-  setQuerySearch,
 }) => {
   const querySearch = qs.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -34,13 +33,6 @@ const ItemComponent = ({
     history.push(`/items/${id}`);
   };
 
-  const handleShortcutClicked = (shortcut) => {
-    setQuerySearch(shortcut);
-    setTimeout(() => {
-      history.push(`/items?search=${shortcut}`);
-    }, 300);
-  };
-
   return (
     <ItemSection>
       <ContainerComponent>
@@ -52,10 +44,7 @@ const ItemComponent = ({
             <React.Fragment>
               <BreadcrumbWrapper>
                 {categories.length > 0 && (
-                  <BreadcrumbComponent
-                    breadcrumbCategories={categories}
-                    handleShortcutClicked={handleShortcutClicked}
-                  />
+                  <BreadcrumbComponent breadcrumbCategories={categories} />
                 )}
               </BreadcrumbWrapper>
               <ListWrapper>
@@ -75,7 +64,6 @@ const ItemComponent = ({
 };
 
 ItemComponent.propTypes = {
-  query: PropTypes.string,
   status: PropTypes.string,
   itemListFetch: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -83,7 +71,6 @@ ItemComponent.propTypes = {
   history: PropTypes.object,
   location: PropTypes.object,
   setItemSelected: PropTypes.func.isRequired,
-  setQuerySearch: PropTypes.func.isRequired,
 };
 
 ItemComponent.defaultProps = {
@@ -91,7 +78,6 @@ ItemComponent.defaultProps = {
   categories: [],
   items: [],
   setItemSelected: () => {},
-  setQuerySearch: () => {},
 };
 
 export default withRouter(ItemComponent);

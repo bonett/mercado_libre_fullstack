@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import NavbarComponent from "../commons/navbar";
-
 import { HomeSection } from "./home.styled";
 
 const HomeComponent = ({ history, query, setQuerySearch }) => {
@@ -18,8 +17,15 @@ const HomeComponent = ({ history, query, setQuerySearch }) => {
     const {
       target: { value },
     } = e;
+    let regex = new RegExp(/^[A-Za-z0-9\s]+$/g);
+
     e.preventDefault();
-    setQuerySearch(value);
+
+    if (value !== "") {
+      if (regex.test(value)) setQuerySearch(value);
+    } else {
+      setQuerySearch("");
+    }
   };
 
   const handleRedirectHome = () => {
