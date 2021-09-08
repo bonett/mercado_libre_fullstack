@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "wilfrido bonett",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
