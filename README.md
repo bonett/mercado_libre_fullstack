@@ -29,12 +29,16 @@ Tools:
 Client:
 
 ```
+cd client
+
 docker build -t "react-app" ./client/
 ```
 
 Server:
 
 ```
+cd server
+
 docker build -t "api-server" ./server/
 ```
 
@@ -68,10 +72,23 @@ cd client
 2. finally 
 
 ```
-yarn run test
+yarn test
 ```
 
 Expect: 
 
 ![test](https://wbonett-test.000webhostapp.com/test.png)
+
+
+## LIVE PREVIEW
+
+Client: 
+
+https://wbonett-test.000webhostapp.com/
+
+Server:
+
+https://dcb-meli-server.herokuapp.com
+
+
 
