@@ -9,6 +9,16 @@ React App
 Tools:
 
 - [React JS](https://reactjs.org/)
+- [Html5](https://www.w3schools.com/html/)
+- [Sass](https://sass-lang.com/)
+- [styled Components](https://styled-components.com/)
+- [Css3](https://www.w3schools.com/css/)
+- [Javascript](https://www.javascript.com/)
+- [Redux](https://redux.js.org/)
+- [Sagas](https://redux-saga.js.org/)
+- [Jest](https://jestjs.io/)
+
+And more ...
 
 ## How to run this App
 
