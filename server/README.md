@@ -10,6 +10,10 @@ Tools:
 
 - [Node](https://nodejs.org/en/about/)
 - [Express](https://expressjs.com/)
+- [Jest](https://jest.io/)
+- [Nodemoon](https://www.npmjs.com/package/nodemon)
+
+And more...
 
 ## How to run this App
 
