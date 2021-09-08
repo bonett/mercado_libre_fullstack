@@ -29,16 +29,12 @@ Tools:
 Client:
 
 ```
-cd client
-
 docker build -t "react-app" ./client/
 ```
 
 Server:
 
 ```
-cd server
-
 docker build -t "api-server" ./server/
 ```
 
